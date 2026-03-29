@@ -1,12 +1,12 @@
 .container {
-  max-width: 480px;
+  width: 100%;
 }
 
 .heading {
-  font-size: 19px;
-  font-weight: 800;
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-normal);
   color: #111;
-  letter-spacing: -0.6px;
+  letter-spacing: -0.3px;
   margin-bottom: 24px;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .rowLabel {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
   color: #111;
   letter-spacing: -0.2px;
 }
@@ -111,8 +111,8 @@
   background: #f2ede4;
   border: 1px solid #e8e3d8;
   color: #6b6456;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
   font-family: inherit;
   padding: 5px 12px;
   border-radius: 3px;
@@ -129,5 +129,5 @@
   background: rgba(212, 134, 10, 0.1);
   border-color: #d4860a;
   color: #b8740a;
-  font-weight: 600;
+  font-weight: var(--fw-medium);
 }

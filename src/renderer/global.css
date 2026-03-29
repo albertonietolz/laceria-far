@@ -1,3 +1,26 @@
+/* ── Typography system ───────────────────────────────────────────────────── */
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+  /* Sizes */
+  --fs-heading:     20px;   /* section titles: Reglas, Ajustes */
+  --fs-modal-title: 16px;   /* modal header: Nueva regla */
+  --fs-tab:         14px;   /* tab labels */
+  --fs-body:        14px;   /* inputs, selects, body text */
+  --fs-btn:         13px;   /* buttons */
+  --fs-label:       11px;   /* uppercase field labels */
+  --fs-small:       12px;   /* secondary / hint text */
+  --fs-xs:          11px;   /* chips, badges */
+
+  /* Weights */
+  --fw-normal:   400;        /* headings, body, inactive tabs */
+  --fw-medium:   500;        /* active tab, buttons, labels, badges */
+  --fw-semibold: 600;        /* save button only */
+
+  /* Label letter-spacing */
+  --ls-label: 0.08em;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -5,12 +28,14 @@
 }
 
 html, body, #root {
+  width: 100%;
   height: 100%;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  font-size: 14px;
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
   background: #faf9f6;
   color: #111;
   -webkit-font-smoothing: antialiased;

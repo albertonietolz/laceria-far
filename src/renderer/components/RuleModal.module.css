@@ -27,8 +27,8 @@
 }
 
 .modalTitle {
-  font-size: 15px;
-  font-weight: 300;
+  font-size: var(--fs-modal-title);
+  font-weight: var(--fw-normal);
   color: #111;
   letter-spacing: -0.2px;
 }
@@ -50,18 +50,19 @@
 }
 
 .label {
-  font-size: 10.5px;
-  font-weight: 700;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   color: #1a2744;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: var(--ls-label);
 }
 
 .input {
   border: 1px solid #e8e3d8;
   border-radius: 3px;
   padding: 8px 10px;
-  font-size: 13px;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
   font-family: inherit;
   color: #111;
   outline: none;
@@ -78,7 +79,8 @@
   border: 1px solid #e8e3d8;
   border-radius: 3px;
   padding: 8px 10px;
-  font-size: 13px;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
   font-family: inherit;
   color: #111;
   outline: none;
@@ -108,11 +110,11 @@
 }
 
 .sectionTitle {
-  font-size: 10.5px;
-  font-weight: 700;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   color: #1a2744;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: var(--ls-label);
 }
 
 .sectionEmpty {
@@ -127,7 +129,8 @@
   color: #a89e8c;
   padding: 3px 10px;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s;
@@ -169,7 +172,8 @@
   border: 1px solid #e8e3d8;
   border-radius: 3px;
   padding: 5px 8px;
-  font-size: 12px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-normal);
   font-family: inherit;
   color: #111;
   background: #faf9f6;
@@ -187,7 +191,8 @@
   border: 1px solid #e8e3d8;
   border-radius: 3px;
   padding: 5px 8px;
-  font-size: 12px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-normal);
   font-family: inherit;
   color: #111;
   background: #faf9f6;
@@ -288,8 +293,8 @@
   background: #f2ede4;
   border: 1px solid #e8e3d8;
   color: #1a2744;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   font-family: inherit;
   padding: 3px 8px;
   border-radius: 3px;
@@ -367,8 +372,8 @@
   color: #6b6456;
   padding: 7px 16px;
   border-radius: 3px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.12s;
@@ -384,8 +389,8 @@
   border: none;
   padding: 7px 20px;
   border-radius: 3px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-semibold);
   font-family: inherit;
   cursor: pointer;
   transition: background 0.12s;

@@ -1,5 +1,5 @@
 .container {
-  max-width: 740px;
+  width: 100%;
 }
 
 /* ── Top bar ─────────────────────────────────────────────────────────────── */
@@ -18,15 +18,15 @@
 }
 
 .heading {
-  font-size: 19px;
-  font-weight: 300;
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-normal);
   color: #111;
   letter-spacing: -0.3px;
 }
 
 .countBadge {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   color: #a89e8c;
   background: rgba(255,255,255,0.7);
   border: 1px solid #e8e3d8;
@@ -43,8 +43,8 @@
   border: none;
   padding: 8px 15px;
   border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
   font-family: inherit;
   letter-spacing: 0.1px;
   cursor: pointer;
@@ -72,7 +72,7 @@
 
 .emptyTitle {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: var(--fw-medium);
   color: #111;
   letter-spacing: -0.3px;
   margin-top: 8px;
@@ -150,8 +150,8 @@
 }
 
 .ruleName {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
   color: #111;
   letter-spacing: -0.3px;
   white-space: nowrap;
@@ -160,8 +160,8 @@
 }
 
 .statusLabel {
-  font-size: 10.5px;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   padding: 1px 6px;
   border-radius: 3px;
   letter-spacing: 0.2px;
@@ -238,8 +238,8 @@
   color: #1a2744;
   padding: 4px 10px;
   border-radius: 3px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s;
@@ -304,9 +304,9 @@
 }
 
 .opBadge {
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.5px;
   background: #f2ede4;
   color: #1a2744;
   padding: 1px 5px;
@@ -324,8 +324,8 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
   padding: 2px 7px 2px 6px;
   border-radius: 3px;
   letter-spacing: 0.1px;
