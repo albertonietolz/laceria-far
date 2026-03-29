@@ -88,13 +88,12 @@ npm run build      # genera el instalador → release/
 
 > *Los patrones geométricos de la lacería nazarí — el origen visual del nombre de este proyecto.*
 
-<!-- Inserta aquí una fotografía de lacería arquitectónica (Alhambra, Real Alcázar, etc.) -->
-![Fotografía de lacería](<!-- ruta o URL de tu fotografía -->)
+![Image](https://github.com/user-attachments/assets/9c54359a-ff54-4247-8c3b-09e8cb08a0d3)
 
 ---
 
 <div align="center">
 
-Hecho con criterio. No con una plantilla.
+Las cosas tienen vida propia, todo es cuestión de despertarle el ánima. — Federico García Lorca
 
 </div>
