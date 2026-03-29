@@ -88,8 +88,7 @@ npm run build      # build installer → release/
 
 > *The geometric patterns of Nasrid lacería — the visual origin of this project's name.*
 
-<!-- Insert a photograph of lacería architecture here (Alhambra, Real Alcázar, etc.) -->
-![Lacería photograph](<!-- path or URL to your photo -->)
+https://github.com/user-attachments/assets/9c54359a-ff54-4247-8c3b-09e8cb08a0d3
 
 ---
 
