@@ -86,7 +86,7 @@ npm run build      # build installer → release/
 
 ## 📸 Lacería
 
-> *The geometric patterns of Nasrid lacería — the visual origin of this project's name.*
+> *The geometric patterns of lacería — the visual origin of this project's name.*
 
 ![Image](https://github.com/user-attachments/assets/9c54359a-ff54-4247-8c3b-09e8cb08a0d3)
 
@@ -94,6 +94,6 @@ npm run build      # build installer → release/
 
 <div align="center">
 
-Made with attention. Not with a template.
+Las cosas tienen vida propia, todo es cuestión de despertarle el ánima. — Federico García Lorca
 
 </div>
