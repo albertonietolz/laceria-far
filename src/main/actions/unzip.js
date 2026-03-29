@@ -1,0 +1,16 @@
+const fs = require('fs/promises')
+const path = require('path')
+const AdmZip = require('adm-zip')
+
+module.exports = async function unzip(filePath, action) {
+  const dest = action.destination || path.dirname(filePath)
+
+  await fs.mkdir(dest, { recursive: true })
+
+  const zip = new AdmZip(filePath)
+  zip.extractAllTo(dest, /* overwrite */ true)
+
+  if (action.deleteOriginal) {
+    await fs.unlink(filePath)
+  }
+}

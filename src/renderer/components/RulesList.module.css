@@ -1,0 +1,338 @@
+.container {
+  max-width: 740px;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heading {
+  font-size: 19px;
+  font-weight: 300;
+  color: #111;
+  letter-spacing: -0.3px;
+}
+
+.countBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a89e8c;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #e8e3d8;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+.btnNew {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.btnNew:hover {
+  background: #2a2a2a;
+}
+
+.btnNew:active {
+  background: #000;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.3px;
+  margin-top: 8px;
+}
+
+.emptyDesc {
+  font-size: 13px;
+  color: #a89e8c;
+}
+
+/* ── Card list ───────────────────────────────────────────────────────────── */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+
+.card {
+  background: #fff;
+  border: 1px solid #e8e3d8;
+  border-left: 3px solid #e8e3d8;
+  border-radius: 3px;
+  padding: 14px 16px 12px;
+  transition: border-color 0.14s;
+}
+
+.card:hover {
+  border-color: #d6d0c4;
+  border-left-color: inherit;
+}
+
+.cardOn {
+  border-left-color: #d4860a;
+}
+
+.cardOff {
+  border-left-color: #d6d0c4;
+  opacity: 0.58;
+}
+
+/* Top row */
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Status dot */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotOn {
+  background: #d4860a;
+  box-shadow: 0 0 0 2.5px rgba(212, 134, 10, 0.18);
+}
+
+.dotOff {
+  background: #c5bfb4;
+}
+
+.ruleName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusLabel {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.statusOn {
+  background: rgba(212, 134, 10, 0.1);
+  color: #b8740a;
+}
+
+.statusOff {
+  background: #f2ede4;
+  color: #a89e8c;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Toggle */
+.toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleTrack {
+  position: relative;
+  width: 34px;
+  height: 19px;
+  background: #d6d0c4;
+  border-radius: 19px;
+  transition: background 0.18s;
+  flex-shrink: 0;
+}
+
+.toggleThumb {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.22);
+}
+
+.toggle input:checked ~ .toggleTrack {
+  background: #d4860a;
+}
+
+.toggle input:checked ~ .toggleTrack .toggleThumb {
+  transform: translateX(15px);
+}
+
+.btnEdit {
+  background: none;
+  border: 1px solid #e8e3d8;
+  color: #1a2744;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s;
+}
+
+.btnEdit:hover {
+  border-color: #d4860a;
+  color: #d4860a;
+}
+
+.btnDelete {
+  background: none;
+  border: 1px solid #f0e8e0;
+  color: #c5998e;
+  padding: 4px 7px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.12s, color 0.12s;
+}
+
+.btnDelete:hover {
+  border-color: #e0a090;
+  color: #c0392b;
+}
+
+/* Path row */
+.pathRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #a89e8c;
+  font-family: 'Consolas', 'Menlo', 'Monaco', monospace;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pathRow svg {
+  flex-shrink: 0;
+  color: #d6d0c4;
+}
+
+/* Footer */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.condInfo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #a89e8c;
+}
+
+.opBadge {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  background: #f2ede4;
+  color: #1a2744;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+/* Action chips */
+.chips {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.1px;
+}
+
+.chip_move   { background: #e8f0fd; color: #1d4ed8; }
+.chip_copy   { background: #f0ebff; color: #7c3aed; }
+.chip_rename { background: rgba(212,134,10,0.12); color: #b8740a; }
+.chip_delete { background: #fdecea; color: #b91c1c; }
+.chip_unzip  { background: #e6faf6; color: #0f766e; }
