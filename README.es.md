@@ -94,6 +94,3 @@ npm run build      # genera el instalador → release/
 
 <div align="center">
 
-Las cosas tienen vida propia, todo es cuestión de despertarle el ánima. — Federico García Lorca
-
-</div>
