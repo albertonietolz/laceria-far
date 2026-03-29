@@ -3,6 +3,7 @@ const path = require('path')
 const AdmZip = require('adm-zip')
 
 module.exports = async function unzip(filePath, action) {
+  await fs.access(filePath)
   const dest = action.destination || path.dirname(filePath)
 
   await fs.mkdir(dest, { recursive: true })

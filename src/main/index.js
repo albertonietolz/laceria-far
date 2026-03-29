@@ -1,14 +1,21 @@
 const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
 const path = require('path')
+const fs = require('fs')
 const crypto = require('crypto')
 const { getRules, saveRules } = require('./store')
-const { initWatchers, pauseWatchers, resumeWatchers } = require('./watcher')
+const { initWatchers, pauseWatchers, resumeWatchers, setMainWindow } = require('./watcher')
 
 const isDev = process.env.NODE_ENV === 'development'
 
 let tray = null
 let win = null
 let watchersPaused = false
+let trayLang = 'es'
+
+const TRAY_STRINGS = {
+  es: { open: 'Abrir', pauseRules: 'Pausar reglas', resumeRules: 'Reanudar reglas', quit: 'Salir' },
+  en: { open: 'Open',  pauseRules: 'Pause rules',   resumeRules: 'Resume rules',    quit: 'Quit'  },
+}
 
 function createTrayIcon() {
   const iconPath = path.join(__dirname, '../../src/assets/icon.ico')
@@ -28,16 +35,17 @@ function createTrayIcon() {
 }
 
 function buildTrayMenu() {
+  const L = TRAY_STRINGS[trayLang] || TRAY_STRINGS.es
   return Menu.buildFromTemplate([
     {
-      label: 'Abrir',
+      label: L.open,
       click: () => {
         win.show()
         win.focus()
       },
     },
     {
-      label: watchersPaused ? 'Reanudar reglas' : 'Pausar reglas',
+      label: watchersPaused ? L.resumeRules : L.pauseRules,
       click: () => {
         if (watchersPaused) {
           resumeWatchers()
@@ -51,7 +59,7 @@ function buildTrayMenu() {
     },
     { type: 'separator' },
     {
-      label: 'Salir',
+      label: L.quit,
       click: () => app.quit(),
     },
   ])
@@ -122,12 +130,24 @@ function registerIpcHandlers() {
     app.setLoginItemSettings({ openAtLogin: enable })
   })
 
+  // ── Language ─────────────────────────────────────────────────────────────
+  ipcMain.handle('settings:setLanguage', (_event, lang) => {
+    if (TRAY_STRINGS[lang]) {
+      trayLang = lang
+      tray.setContextMenu(buildTrayMenu())
+    }
+  })
+
   // ── Dialog ───────────────────────────────────────────────────────────────
   ipcMain.handle('dialog:selectFolder', async () => {
     const { canceled, filePaths } = await dialog.showOpenDialog(win, {
       properties: ['openDirectory'],
     })
     return canceled ? null : filePaths[0]
+  })
+
+  ipcMain.handle('dialog:checkPath', (_event, p) => {
+    return fs.existsSync(p)
   })
 }
 
@@ -174,5 +194,6 @@ app.whenReady().then(() => {
   registerIpcHandlers()
   initWatchers()
   createWindow()
+  setMainWindow(win)
   createTray()
 })

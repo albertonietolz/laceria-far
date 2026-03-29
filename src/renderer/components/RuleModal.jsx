@@ -1,29 +1,6 @@
 import React, { useState, useRef } from 'react'
 import styles from './RuleModal.module.css'
-
-const FIELD_OPTIONS = [
-  { value: 'extension', label: 'Extensión' },
-  { value: 'name', label: 'Nombre' },
-  { value: 'size', label: 'Tamaño (bytes)' },
-  { value: 'createdAt', label: 'Fecha de creación' },
-]
-
-const OPERATOR_OPTIONS = [
-  { value: 'equals', label: 'es igual a' },
-  { value: 'contains', label: 'contiene' },
-  { value: 'startsWith', label: 'empieza por' },
-  { value: 'endsWith', label: 'termina en' },
-  { value: 'greaterThan', label: 'mayor que' },
-  { value: 'lessThan', label: 'menor que' },
-]
-
-const ACTION_TYPES = [
-  { value: 'move', label: 'Mover' },
-  { value: 'copy', label: 'Copiar' },
-  { value: 'rename', label: 'Renombrar' },
-  { value: 'delete', label: 'Eliminar' },
-  { value: 'unzip', label: 'Descomprimir' },
-]
+import { t } from '../i18n'
 
 function emptyCondition() {
   return { field: 'extension', operator: 'equals', value: '' }
@@ -68,7 +45,7 @@ function FolderInputSm({ value, onChange }) {
         className={styles.inputSm}
         value={value}
         onChange={e => onChange(e.target.value)}
-        placeholder="Ruta de destino"
+        placeholder={t('modal.destinationPlaceholder')}
       />
       <button type="button" className={styles.btnFolderSm} onClick={pick} title="Seleccionar carpeta">
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -78,13 +55,6 @@ function FolderInputSm({ value, onChange }) {
     </div>
   )
 }
-
-const RENAME_TOKENS = [
-  { label: 'Nombre original', value: '{name}' },
-  { label: 'Extensión',       value: '{ext}'  },
-  { label: 'Fecha',           value: '{date}' },
-  { label: 'Fecha y hora',    value: '{datetime}' },
-]
 
 function RenameInput({ value, onChange }) {
   const inputRef = useRef(null)
@@ -102,6 +72,13 @@ function RenameInput({ value, onChange }) {
     })
   }
 
+  const tokens = [
+    { label: t('modal.tokenName'),     value: '{name}'     },
+    { label: t('modal.tokenExt'),      value: '{ext}'      },
+    { label: t('modal.tokenDate'),     value: '{date}'     },
+    { label: t('modal.tokenDatetime'), value: '{datetime}' },
+  ]
+
   return (
     <div className={styles.renameBuilder}>
       <input
@@ -112,14 +89,14 @@ function RenameInput({ value, onChange }) {
         placeholder="informe_{date}{ext}"
       />
       <div className={styles.tokenRow}>
-        {RENAME_TOKENS.map(t => (
+        {tokens.map(tok => (
           <button
-            key={t.value}
+            key={tok.value}
             type="button"
             className={styles.tokenBtn}
-            onClick={() => insert(t.value)}
+            onClick={() => insert(tok.value)}
           >
-            {t.label}
+            {tok.label}
           </button>
         ))}
       </div>
@@ -163,8 +140,18 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
     setActions(prev => prev.filter((_, idx) => idx !== i))
 
   const handleSave = async () => {
-    if (!name.trim()) { setError('El nombre es obligatorio.'); return }
-    if (!watchPath.trim()) { setError('La ruta vigilada es obligatoria.'); return }
+    if (!name.trim()) { setError(t('modal.errorName')); return }
+    if (!watchPath.trim()) { setError(t('modal.errorPath')); return }
+    const pathExists = await window.laceria.checkPath(watchPath.trim())
+    if (!pathExists) { setError(t('modal.errorPathNotFound')); return }
+    if (conditions.length === 0) { setError(t('modal.errorNoConditions')); return }
+    if (actions.length === 0) { setError(t('modal.errorNoActions')); return }
+    const renameAction = actions.find(a => a.type === 'rename')
+    if (renameAction) {
+      const invalidChars = /[<>"/\\|?*]/
+      const patternWithoutTokens = (renameAction.pattern ?? '').replace(/\{name\}|\{ext\}|\{date\}|\{datetime\}/g, '')
+      if (invalidChars.test(patternWithoutTokens)) { setError(t('modal.errorRenamePattern')); return }
+    }
     setSaving(true)
     setError('')
     try {
@@ -180,62 +167,86 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
       await window.laceria.saveRule(ruleData)
       onSaved()
     } catch (e) {
-      setError(e.message || 'Error al guardar.')
+      setError(e.message || t('modal.errorSave'))
       setSaving(false)
     }
   }
+
+  const fieldOptions = [
+    { value: 'extension', label: t('field.extension') },
+    { value: 'name',      label: t('field.name')      },
+    { value: 'size',      label: t('field.size')      },
+    { value: 'createdAt', label: t('field.createdAt') },
+  ]
+
+  const operatorOptions = [
+    { value: 'equals',      label: t('op.equals')      },
+    { value: 'contains',    label: t('op.contains')    },
+    { value: 'startsWith',  label: t('op.startsWith')  },
+    { value: 'endsWith',    label: t('op.endsWith')    },
+    { value: 'greaterThan', label: t('op.greaterThan') },
+    { value: 'lessThan',    label: t('op.lessThan')    },
+  ]
+
+  const actionTypes = [
+    { value: 'move',   label: t('action.move')   },
+    { value: 'copy',   label: t('action.copy')   },
+    { value: 'rename', label: t('action.rename') },
+    { value: 'delete', label: t('action.delete') },
+    { value: 'unzip',  label: t('action.unzip')  },
+  ]
 
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
-          <h3 className={styles.modalTitle}>{rule ? 'Editar regla' : 'Nueva regla'}</h3>
+          <h3 className={styles.modalTitle}>{rule ? t('modal.editRule') : t('modal.newRule')}</h3>
         </div>
 
         <div className={styles.body}>
           <div className={styles.fieldRow}>
-            <label className={styles.label}>Nombre</label>
+            <label className={styles.label}>{t('modal.labelName')}</label>
             <input
               className={styles.input}
               value={name}
               onChange={e => setName(e.target.value)}
-              placeholder="Mi regla"
+              placeholder={t('modal.namePlaceholder')}
               autoFocus
             />
           </div>
 
           <div className={styles.fieldRow}>
-            <label className={styles.label}>Ruta vigilada</label>
+            <label className={styles.label}>{t('modal.labelWatchPath')}</label>
             <FolderInput
               value={watchPath}
               onChange={setWatchPath}
-              placeholder="C:\Users\...\Descargas"
+              placeholder={t('modal.watchPathPlaceholder')}
             />
           </div>
 
           <div className={styles.fieldRow}>
-            <label className={styles.label}>Operador de condiciones</label>
+            <label className={styles.label}>{t('modal.labelOperator')}</label>
             <select
               className={styles.select}
               value={conditionOperator}
               onChange={e => setConditionOperator(e.target.value)}
             >
-              <option value="AND">AND — todas deben cumplirse</option>
-              <option value="OR">OR — basta con una</option>
+              <option value="AND">{t('modal.opAnd')}</option>
+              <option value="OR">{t('modal.opOr')}</option>
             </select>
           </div>
 
           {/* Conditions */}
           <section className={styles.section}>
             <div className={styles.sectionHeader}>
-              <span className={styles.sectionTitle}>Condiciones</span>
+              <span className={styles.sectionTitle}>{t('modal.sectionConditions')}</span>
               <button className={styles.btnAdd} type="button" onClick={addCondition}>
-                + Añadir condición
+                {t('modal.addCondition')}
               </button>
             </div>
 
             {conditions.length === 0 && (
-              <p className={styles.sectionEmpty}>Sin condiciones — se aplicará a todos los archivos.</p>
+              <p className={styles.sectionEmpty}>{t('modal.noConditions')}</p>
             )}
 
             <div className={styles.itemList}>
@@ -246,7 +257,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                     value={cond.field}
                     onChange={e => updateCondition(i, 'field', e.target.value)}
                   >
-                    {FIELD_OPTIONS.map(o => (
+                    {fieldOptions.map(o => (
                       <option key={o.value} value={o.value}>{o.label}</option>
                     ))}
                   </select>
@@ -255,7 +266,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                     value={cond.operator}
                     onChange={e => updateCondition(i, 'operator', e.target.value)}
                   >
-                    {OPERATOR_OPTIONS.map(o => (
+                    {operatorOptions.map(o => (
                       <option key={o.value} value={o.value}>{o.label}</option>
                     ))}
                   </select>
@@ -263,13 +274,12 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                     className={styles.inputSm}
                     value={cond.value}
                     onChange={e => updateCondition(i, 'value', e.target.value)}
-                    placeholder="valor"
+                    placeholder={t('modal.condValuePlaceholder')}
                   />
                   <button
                     className={styles.btnRemove}
                     type="button"
                     onClick={() => removeCondition(i)}
-                    title="Eliminar condición"
                   >
                     ×
                   </button>
@@ -281,14 +291,14 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
           {/* Actions */}
           <section className={styles.section}>
             <div className={styles.sectionHeader}>
-              <span className={styles.sectionTitle}>Acciones</span>
+              <span className={styles.sectionTitle}>{t('modal.sectionActions')}</span>
               <button className={styles.btnAdd} type="button" onClick={addAction}>
-                + Añadir acción
+                {t('modal.addAction')}
               </button>
             </div>
 
             {actions.length === 0 && (
-              <p className={styles.sectionEmpty}>Sin acciones.</p>
+              <p className={styles.sectionEmpty}>{t('modal.noActions')}</p>
             )}
 
             <div className={styles.itemList}>
@@ -301,7 +311,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                       value={action.type}
                       onChange={e => updateAction(i, 'type', e.target.value)}
                     >
-                      {ACTION_TYPES.map(o => (
+                      {actionTypes.map(o => (
                         <option key={o.value} value={o.value}>{o.label}</option>
                       ))}
                     </select>
@@ -332,7 +342,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                             checked={!!action.deleteOriginal}
                             onChange={e => updateAction(i, 'deleteOriginal', e.target.checked)}
                           />
-                          Eliminar original
+                          {t('modal.deleteOriginal')}
                         </label>
                       </div>
                     )}
@@ -341,7 +351,6 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                       className={styles.btnRemove}
                       type="button"
                       onClick={() => removeAction(i)}
-                      title="Eliminar acción"
                     >
                       ×
                     </button>
@@ -356,10 +365,10 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
 
         <div className={styles.footer}>
           <button className={styles.btnCancel} type="button" onClick={onCancel}>
-            Cancelar
+            {t('modal.cancel')}
           </button>
           <button className={styles.btnSave} type="button" onClick={handleSave} disabled={saving}>
-            {saving ? 'Guardando…' : 'Guardar'}
+            {saving ? t('modal.saving') : t('modal.save')}
           </button>
         </div>
       </div>

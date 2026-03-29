@@ -92,3 +92,42 @@
 .toggle input:checked ~ .toggleTrack .toggleThumb {
   transform: translateX(17px);
 }
+
+/* Divider between settings rows */
+.divider {
+  height: 1px;
+  background: #f0ebe0;
+  margin: 0 18px;
+}
+
+/* Language selector */
+.langGroup {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.langBtn {
+  background: #f2ede4;
+  border: 1px solid #e8e3d8;
+  color: #6b6456;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 5px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+
+.langBtn:hover {
+  border-color: #d4860a;
+  color: #b8740a;
+}
+
+.langBtnActive {
+  background: rgba(212, 134, 10, 0.1);
+  border-color: #d4860a;
+  color: #b8740a;
+  font-weight: 600;
+}

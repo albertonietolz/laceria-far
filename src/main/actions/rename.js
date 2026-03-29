@@ -14,6 +14,7 @@ function formatDatetime(d) {
 }
 
 module.exports = async function rename(filePath, action) {
+  await fs.access(filePath)
   const ext = path.extname(filePath)
   const name = path.basename(filePath, ext)
   const dir = path.dirname(filePath)

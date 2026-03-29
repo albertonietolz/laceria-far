@@ -14,6 +14,17 @@ const ACTION_MAP = { move, copy, rename, delete: deleteFile, unzip }
 /** @type {Map<string, import('chokidar').FSWatcher>} */
 const watchers = new Map()
 let paused = false
+let mainWindow = null
+
+function setMainWindow(win) {
+  mainWindow = win
+}
+
+function sendNotification(type, rule, actionType, message) {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send('notification', { type, rule, action: actionType, message })
+  }
+}
 
 // ── File metadata ──────────────────────────────────────────────────────────
 
@@ -87,8 +98,11 @@ async function executeActions(rule, filePath) {
     }
     try {
       await handler(filePath, action)
+      console.log(`[watcher] Action "${action.type}" succeeded for "${filePath}"`)
+      sendNotification('success', rule.name, action.type, null)
     } catch (err) {
       console.error(`[watcher] Action "${action.type}" failed for "${filePath}":`, err.message)
+      sendNotification('error', rule.name, action.type, err.message)
     }
   }
 }
@@ -172,4 +186,4 @@ function resumeWatchers() {
   console.log('[watcher] Resumed')
 }
 
-module.exports = { initWatchers, stopWatchers, pauseWatchers, resumeWatchers }
+module.exports = { initWatchers, stopWatchers, pauseWatchers, resumeWatchers, setMainWindow }

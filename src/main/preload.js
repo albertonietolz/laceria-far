@@ -17,4 +17,15 @@ contextBridge.exposeInMainWorld("laceria", {
 
   // Dialog
   selectFolder: () => ipcRenderer.invoke("dialog:selectFolder"),
+  checkPath: (p) => ipcRenderer.invoke("dialog:checkPath", p),
+
+  // Language
+  setLanguage: (lang) => ipcRenderer.invoke("settings:setLanguage", lang),
+
+  // Notifications from main process
+  onNotification: (callback) => {
+    const handler = (_event, data) => callback(data);
+    ipcRenderer.on("notification", handler);
+    return () => ipcRenderer.removeListener("notification", handler);
+  },
 });

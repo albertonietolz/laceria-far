@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Settings.module.css'
+import { t, getLanguage, setLanguage } from '../i18n'
 
 export default function Settings() {
   const [loginItem, setLoginItem] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [lang, setLang] = useState(getLanguage())
 
   useEffect(() => {
     window.laceria.getLoginItem().then(value => {
@@ -12,35 +14,64 @@ export default function Settings() {
     })
   }, [])
 
-  const handleToggle = async (e) => {
+  const handleLoginToggle = async (e) => {
     const value = e.target.checked
     setLoginItem(value)
     await window.laceria.setLoginItem(value)
   }
 
+  const handleLangChange = async (newLang) => {
+    setLang(newLang)
+    setLanguage(newLang)
+    await window.laceria.setLanguage(newLang)
+  }
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Ajustes</h2>
+      <h2 className={styles.heading}>{t('settings.heading')}</h2>
 
       <div className={styles.card}>
+        {/* Login item */}
         <div className={styles.row}>
           <div className={styles.info}>
-            <span className={styles.rowLabel}>Arrancar con Windows</span>
-            <span className={styles.rowDesc}>
-              Inicia Laceria FAR automáticamente al encender el equipo.
-            </span>
+            <span className={styles.rowLabel}>{t('settings.loginItem')}</span>
+            <span className={styles.rowDesc}>{t('settings.loginItemDesc')}</span>
           </div>
           <label className={styles.toggle}>
             <input
               type="checkbox"
               checked={loginItem}
-              onChange={handleToggle}
+              onChange={handleLoginToggle}
               disabled={loading}
             />
             <span className={styles.toggleTrack}>
               <span className={styles.toggleThumb} />
             </span>
           </label>
+        </div>
+
+        <div className={styles.divider} />
+
+        {/* Language */}
+        <div className={styles.row}>
+          <div className={styles.info}>
+            <span className={styles.rowLabel}>{t('settings.language')}</span>
+            <span className={styles.rowDesc}>{t('settings.languageDesc')}</span>
+          </div>
+          <div className={styles.langGroup}>
+            <button
+              className={lang === 'es' ? `${styles.langBtn} ${styles.langBtnActive}` : styles.langBtn}
+              onClick={() => handleLangChange('es')}
+            >
+              {t('settings.langEs')}
+            </button>
+            <button
+              className={lang === 'en' ? `${styles.langBtn} ${styles.langBtnActive}` : styles.langBtn}
+              onClick={() => handleLangChange('en')}
+            >
+              {t('settings.langEn')}
+            </button>
+          </div>
         </div>
       </div>
     </div>
