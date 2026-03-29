@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(node -e \"const m = require\\(''png-to-ico''\\); console.log\\(typeof m, Object.keys\\(m\\)\\)\")",
-      "Bash(node -e \"require\\(''''sharp''''\\)\")"
-    ]
-  }
-}
