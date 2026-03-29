@@ -30,7 +30,7 @@
 
 .message {
   flex: 1;
-  font-size: 13px;
+  font-size: var(--fs-small);
   line-height: 1.4;
   word-break: break-word;
 }
@@ -53,31 +53,25 @@
 
 /* Types */
 .success {
-  background: #f0faf2;
-  border-color: #a8d5b0;
-  color: #1e5c2c;
+  background: var(--toast-success-bg);
+  border-color: var(--toast-success-border);
+  color: var(--toast-success-text);
 }
 
-.success .close {
-  color: #1e5c2c;
-}
+.success .close { color: var(--toast-success-text); }
 
 .error {
-  background: #fef2f2;
-  border-color: #f5b8b8;
-  color: #7c1d1d;
+  background: var(--toast-error-bg);
+  border-color: var(--toast-error-border);
+  color: var(--toast-error-text);
 }
 
-.error .close {
-  color: #7c1d1d;
-}
+.error .close { color: var(--toast-error-text); }
 
 .info {
-  background: #f0f5ff;
-  border-color: #b8ccf5;
-  color: #1e3a7c;
+  background: var(--toast-info-bg);
+  border-color: var(--toast-info-border);
+  color: var(--toast-info-text);
 }
 
-.info .close {
-  color: #1e3a7c;
-}
+.info .close { color: var(--toast-info-text); }

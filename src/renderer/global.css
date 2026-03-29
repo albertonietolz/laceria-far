@@ -1,3 +1,88 @@
+/* ── Color system (light) ────────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-base:          #faf9f6;
+  --bg-surface:       #ffffff;
+  --bg-input:         #faf9f6;
+  --bg-input-focus:   #ffffff;
+  --bg-btn-secondary: #f2ede4;
+  --bg-btn-primary:   #111111;
+
+  /* Borders */
+  --border-default: #e8e3d8;
+  --border-subtle:  #f0ebe0;
+  --border-muted:   #d6d0c4;
+
+  /* Text */
+  --text-primary:       #111111;
+  --text-secondary:     #a89e8c;
+  --text-tertiary:      #6b6456;
+  --text-muted:         #c5bfb4;
+  --text-emphasis:      #1a2744;
+  --text-btn-primary:   #ffffff;
+
+  /* Accent (unchanged between themes) */
+  --accent:         #d4860a;
+  --accent-hover:   #b8740a;
+  --accent-bg:      rgba(212, 134, 10, 0.1);
+  --accent-bg-deep: rgba(212, 134, 10, 0.12);
+
+  /* Status */
+  --status-off-color: #d6d0c4;
+  --status-on-shadow: rgba(212, 134, 10, 0.18);
+
+  /* Chips */
+  --chip-move-bg:    #e8f0fd; --chip-move-text:    #1d4ed8;
+  --chip-copy-bg:    #f0ebff; --chip-copy-text:    #7c3aed;
+  --chip-rename-bg:  rgba(212, 134, 10, 0.12); --chip-rename-text: #b8740a;
+  --chip-delete-bg:  #fdecea; --chip-delete-text:  #b91c1c;
+  --chip-unzip-bg:   #e6faf6; --chip-unzip-text:   #0f766e;
+
+  /* Toasts */
+  --toast-success-bg: #f0faf2; --toast-success-border: #a8d5b0; --toast-success-text: #1e5c2c;
+  --toast-error-bg:   #fef2f2; --toast-error-border:   #f5b8b8; --toast-error-text:   #7c1d1d;
+  --toast-info-bg:    #f0f5ff; --toast-info-border:    #b8ccf5; --toast-info-text:    #1e3a7c;
+
+  /* Lacería pattern */
+  --laceria-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5L55 30L30 55L5 30Z' fill='none' stroke='%23111' stroke-opacity='0.055' stroke-width='0.9'/%3E%3Cpath d='M30 16L44 30L30 44L16 30Z' fill='none' stroke='%23111' stroke-opacity='0.045' stroke-width='0.7'/%3E%3Cpath d='M5 5L16 16M55 5L44 16M5 55L16 44M55 55L44 44' stroke='%23111' stroke-opacity='0.04' stroke-width='0.7'/%3E%3C/svg%3E");
+}
+
+/* ── Color system (dark) ─────────────────────────────────────────────────── */
+:root.theme-dark {
+  --bg-base:          #111111;
+  --bg-surface:       #1a1a1a;
+  --bg-input:         #1a1a1a;
+  --bg-input-focus:   #222222;
+  --bg-btn-secondary: #2a2a2a;
+  --bg-btn-primary:   #f0ece4;
+
+  --border-default: #2a2a2a;
+  --border-subtle:  #252525;
+  --border-muted:   #333333;
+
+  --text-primary:     #f0ece4;
+  --text-secondary:   #8a8580;
+  --text-tertiary:    #8a8580;
+  --text-muted:       #555555;
+  --text-emphasis:    #c8cfe0;
+  --text-btn-primary: #111111;
+
+  --status-off-color: #444444;
+  --status-on-shadow: rgba(212, 134, 10, 0.25);
+
+  --chip-move-bg:    #1a2540; --chip-move-text:    #7ca8f0;
+  --chip-copy-bg:    #2a1a40; --chip-copy-text:    #b094e8;
+  --chip-rename-bg:  rgba(212, 134, 10, 0.15); --chip-rename-text: #d4860a;
+  --chip-delete-bg:  #3a1a1a; --chip-delete-text:  #e87070;
+  --chip-unzip-bg:   #0f2a26; --chip-unzip-text:   #4ac9b8;
+
+  --toast-success-bg: #0f2a15; --toast-success-border: #2a5c35; --toast-success-text: #6dd48a;
+  --toast-error-bg:   #2a0f0f; --toast-error-border:   #5c2a2a; --toast-error-text:   #e87070;
+  --toast-info-bg:    #0f1a2a; --toast-info-border:    #2a3a5c; --toast-info-text:    #7ca8f0;
+
+  --laceria-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5L55 30L30 55L5 30Z' fill='none' stroke='%23f0ece4' stroke-opacity='0.055' stroke-width='0.9'/%3E%3Cpath d='M30 16L44 30L30 44L16 30Z' fill='none' stroke='%23f0ece4' stroke-opacity='0.045' stroke-width='0.7'/%3E%3Cpath d='M5 5L16 16M55 5L44 16M5 55L16 44M55 55L44 44' stroke='%23f0ece4' stroke-opacity='0.04' stroke-width='0.7'/%3E%3C/svg%3E");
+}
+
 /* ── Typography system ───────────────────────────────────────────────────── */
 :root {
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;

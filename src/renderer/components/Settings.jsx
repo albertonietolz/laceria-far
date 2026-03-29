@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import styles from './Settings.module.css'
 import { t, getLanguage, setLanguage } from '../i18n'
+import { getTheme, setTheme, subscribeTheme } from '../theme'
 
 export default function Settings() {
   const [loginItem, setLoginItem] = useState(false)
   const [loading, setLoading] = useState(true)
   const [lang, setLang] = useState(getLanguage())
+  const [theme, setThemeState] = useState(getTheme())
+  const [, forceUpdate] = useReducer(x => x + 1, 0)
 
   useEffect(() => {
     window.laceria.getLoginItem().then(value => {
@@ -13,6 +16,8 @@ export default function Settings() {
       setLoading(false)
     })
   }, [])
+
+  useEffect(() => subscribeTheme((t) => { setThemeState(t); forceUpdate() }), [])
 
   const handleLoginToggle = async (e) => {
     const value = e.target.checked
@@ -24,6 +29,10 @@ export default function Settings() {
     setLang(newLang)
     setLanguage(newLang)
     await window.laceria.setLanguage(newLang)
+  }
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme)
   }
 
   return (
@@ -48,6 +57,30 @@ export default function Settings() {
               <span className={styles.toggleThumb} />
             </span>
           </label>
+        </div>
+
+        <div className={styles.divider} />
+
+        {/* Appearance */}
+        <div className={styles.row}>
+          <div className={styles.info}>
+            <span className={styles.rowLabel}>{t('settings.appearance')}</span>
+            <span className={styles.rowDesc}>{t('settings.appearanceDesc')}</span>
+          </div>
+          <div className={styles.langGroup}>
+            <button
+              className={theme === 'light' ? `${styles.langBtn} ${styles.langBtnActive}` : styles.langBtn}
+              onClick={() => handleThemeChange('light')}
+            >
+              {t('settings.themeLight')}
+            </button>
+            <button
+              className={theme === 'dark' ? `${styles.langBtn} ${styles.langBtnActive}` : styles.langBtn}
+              onClick={() => handleThemeChange('dark')}
+            >
+              {t('settings.themeDark')}
+            </button>
+          </div>
         </div>
 
         <div className={styles.divider} />

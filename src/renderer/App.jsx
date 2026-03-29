@@ -57,6 +57,7 @@ export default function App() {
         {tab === 'rules' ? <RulesList /> : <Settings />}
       </main>
       <ToastContainer toasts={toasts} onRemove={removeToast} />
+      <p className={styles.credit}>{t('credit')}</p>
     </div>
   )
 }

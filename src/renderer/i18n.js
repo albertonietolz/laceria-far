@@ -83,13 +83,18 @@ const strings = {
     'action.unzip':  'Descomprimir',
 
     // Settings
-    'settings.heading':         'Ajustes',
-    'settings.loginItem':       'Arrancar con Windows',
-    'settings.loginItemDesc':   'Inicia Laceria FAR automáticamente al encender el equipo.',
-    'settings.language':        'Idioma',
-    'settings.languageDesc':    'Elige el idioma de la interfaz.',
-    'settings.langEs':          'Español',
-    'settings.langEn':          'English',
+    'settings.heading':           'Ajustes',
+    'settings.loginItem':         'Arrancar con Windows',
+    'settings.loginItemDesc':     'Inicia Laceria FAR automáticamente al encender el equipo.',
+    'settings.language':          'Idioma',
+    'settings.languageDesc':      'Elige el idioma de la interfaz.',
+    'settings.langEs':            'Español',
+    'settings.langEn':            'English',
+    'credit':                     'Realizado por: Alberto Nieto Lozano',
+    'settings.appearance':        'Apariencia',
+    'settings.appearanceDesc':    'Elige entre modo claro y oscuro.',
+    'settings.themeLight':        'Claro',
+    'settings.themeDark':         'Oscuro',
 
     // Tray
     'tray.open':         'Abrir',
@@ -175,13 +180,18 @@ const strings = {
     'action.unzip':  'Extract',
 
     // Settings
-    'settings.heading':         'Settings',
-    'settings.loginItem':       'Start with Windows',
-    'settings.loginItemDesc':   'Starts Laceria FAR automatically when you turn on your computer.',
-    'settings.language':        'Language',
-    'settings.languageDesc':    'Choose the interface language.',
-    'settings.langEs':          'Español',
-    'settings.langEn':          'English',
+    'settings.heading':           'Settings',
+    'settings.loginItem':         'Start with Windows',
+    'settings.loginItemDesc':     'Starts Laceria FAR automatically when you turn on your computer.',
+    'settings.language':          'Language',
+    'settings.languageDesc':      'Choose the interface language.',
+    'settings.langEs':            'Español',
+    'settings.langEn':            'English',
+    'credit':                     'Made by: Alberto Nieto Lozano',
+    'settings.appearance':        'Appearance',
+    'settings.appearanceDesc':    'Choose between light and dark mode.',
+    'settings.themeLight':        'Light',
+    'settings.themeDark':         'Dark',
 
     // Tray
     'tray.open':         'Open',

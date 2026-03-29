@@ -5,14 +5,14 @@
 .heading {
   font-size: var(--fs-heading);
   font-weight: var(--fw-normal);
-  color: #111;
+  color: var(--text-primary);
   letter-spacing: -0.3px;
   margin-bottom: 24px;
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #e8e3d8;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -34,13 +34,13 @@
 .rowLabel {
   font-size: var(--fs-body);
   font-weight: var(--fw-medium);
-  color: #111;
+  color: var(--text-primary);
   letter-spacing: -0.2px;
 }
 
 .rowDesc {
-  font-size: 12px;
-  color: #a89e8c;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
 }
 
 /* Toggle — amber accent */
@@ -68,7 +68,7 @@
   position: relative;
   width: 38px;
   height: 21px;
-  background: #d6d0c4;
+  background: var(--status-off-color);
   border-radius: 21px;
   transition: background 0.18s;
 }
@@ -86,7 +86,7 @@
 }
 
 .toggle input:checked ~ .toggleTrack {
-  background: #d4860a;
+  background: var(--accent);
 }
 
 .toggle input:checked ~ .toggleTrack .toggleThumb {
@@ -96,11 +96,11 @@
 /* Divider between settings rows */
 .divider {
   height: 1px;
-  background: #f0ebe0;
+  background: var(--border-subtle);
   margin: 0 18px;
 }
 
-/* Language selector */
+/* Language / theme selector buttons */
 .langGroup {
   display: flex;
   gap: 4px;
@@ -108,9 +108,9 @@
 }
 
 .langBtn {
-  background: #f2ede4;
-  border: 1px solid #e8e3d8;
-  color: #6b6456;
+  background: var(--bg-btn-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-tertiary);
   font-size: var(--fs-btn);
   font-weight: var(--fw-medium);
   font-family: inherit;
@@ -121,13 +121,13 @@
 }
 
 .langBtn:hover {
-  border-color: #d4860a;
-  color: #b8740a;
+  border-color: var(--accent);
+  color: var(--accent-hover);
 }
 
 .langBtnActive {
-  background: rgba(212, 134, 10, 0.1);
-  border-color: #d4860a;
-  color: #b8740a;
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent-hover);
   font-weight: var(--fw-medium);
 }

@@ -118,7 +118,15 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
   const [error, setError] = useState('')
 
   const updateCondition = (i, field, value) =>
-    setConditions(prev => prev.map((c, idx) => idx === i ? { ...c, [field]: value } : c))
+    setConditions(prev => prev.map((c, idx) => {
+      if (idx !== i) return c
+      if (field === 'field') {
+        const validOps = getOperatorsForField(value)
+        const op = validOps.includes(c.operator) ? c.operator : validOps[0]
+        return { ...c, field: value, operator: op }
+      }
+      return { ...c, [field]: value }
+    }))
 
   const addCondition = () =>
     setConditions(prev => [...prev, emptyCondition()])
@@ -187,6 +195,18 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
     { value: 'greaterThan', label: t('op.greaterThan') },
     { value: 'lessThan',    label: t('op.lessThan')    },
   ]
+
+  const TEXT_OPERATORS = ['equals', 'contains', 'startsWith', 'endsWith']
+  const NUM_OPERATORS  = ['equals', 'greaterThan', 'lessThan']
+
+  function getOperatorsForField(field) {
+    return (field === 'size' || field === 'createdAt') ? NUM_OPERATORS : TEXT_OPERATORS
+  }
+
+  function operatorOptionsFor(field) {
+    const allowed = getOperatorsForField(field)
+    return operatorOptions.filter(o => allowed.includes(o.value))
+  }
 
   const actionTypes = [
     { value: 'move',   label: t('action.move')   },
@@ -266,7 +286,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                     value={cond.operator}
                     onChange={e => updateCondition(i, 'operator', e.target.value)}
                   >
-                    {operatorOptions.map(o => (
+                    {operatorOptionsFor(cond.field).map(o => (
                       <option key={o.value} value={o.value}>{o.label}</option>
                     ))}
                   </select>

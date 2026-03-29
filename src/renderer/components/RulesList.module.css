@@ -20,16 +20,16 @@
 .heading {
   font-size: var(--fs-heading);
   font-weight: var(--fw-normal);
-  color: #111;
+  color: var(--text-primary);
   letter-spacing: -0.3px;
 }
 
 .countBadge {
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
-  color: #a89e8c;
-  background: rgba(255,255,255,0.7);
-  border: 1px solid #e8e3d8;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
   padding: 2px 7px;
   border-radius: 20px;
 }
@@ -38,8 +38,8 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #111;
-  color: #fff;
+  background: var(--bg-btn-primary);
+  color: var(--text-btn-primary);
   border: none;
   padding: 8px 15px;
   border-radius: 4px;
@@ -48,15 +48,15 @@
   font-family: inherit;
   letter-spacing: 0.1px;
   cursor: pointer;
-  transition: background 0.12s;
+  transition: opacity 0.12s;
 }
 
 .btnNew:hover {
-  background: #2a2a2a;
+  opacity: 0.85;
 }
 
 .btnNew:active {
-  background: #000;
+  opacity: 0.7;
 }
 
 /* ── Empty state ─────────────────────────────────────────────────────────── */
@@ -73,14 +73,14 @@
 .emptyTitle {
   font-size: 15px;
   font-weight: var(--fw-medium);
-  color: #111;
+  color: var(--text-primary);
   letter-spacing: -0.3px;
   margin-top: 8px;
 }
 
 .emptyDesc {
   font-size: 13px;
-  color: #a89e8c;
+  color: var(--text-secondary);
 }
 
 /* ── Card list ───────────────────────────────────────────────────────────── */
@@ -94,25 +94,25 @@
 /* ── Card ────────────────────────────────────────────────────────────────── */
 
 .card {
-  background: #fff;
-  border: 1px solid #e8e3d8;
-  border-left: 3px solid #e8e3d8;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-left: 3px solid var(--border-default);
   border-radius: 3px;
   padding: 14px 16px 12px;
   transition: border-color 0.14s;
 }
 
 .card:hover {
-  border-color: #d6d0c4;
+  border-color: var(--border-muted);
   border-left-color: inherit;
 }
 
 .cardOn {
-  border-left-color: #d4860a;
+  border-left-color: var(--accent);
 }
 
 .cardOff {
-  border-left-color: #d6d0c4;
+  border-left-color: var(--status-off-color);
   opacity: 0.58;
 }
 
@@ -141,18 +141,18 @@
 }
 
 .dotOn {
-  background: #d4860a;
-  box-shadow: 0 0 0 2.5px rgba(212, 134, 10, 0.18);
+  background: var(--accent);
+  box-shadow: 0 0 0 2.5px var(--status-on-shadow);
 }
 
 .dotOff {
-  background: #c5bfb4;
+  background: var(--status-off-color);
 }
 
 .ruleName {
   font-size: var(--fs-body);
   font-weight: var(--fw-medium);
-  color: #111;
+  color: var(--text-primary);
   letter-spacing: -0.3px;
   white-space: nowrap;
   overflow: hidden;
@@ -170,13 +170,13 @@
 }
 
 .statusOn {
-  background: rgba(212, 134, 10, 0.1);
-  color: #b8740a;
+  background: var(--accent-bg);
+  color: var(--accent-hover);
 }
 
 .statusOff {
-  background: #f2ede4;
-  color: #a89e8c;
+  background: var(--bg-btn-secondary);
+  color: var(--text-secondary);
 }
 
 /* Controls */
@@ -206,7 +206,7 @@
   position: relative;
   width: 34px;
   height: 19px;
-  background: #d6d0c4;
+  background: var(--status-off-color);
   border-radius: 19px;
   transition: background 0.18s;
   flex-shrink: 0;
@@ -225,7 +225,7 @@
 }
 
 .toggle input:checked ~ .toggleTrack {
-  background: #d4860a;
+  background: var(--accent);
 }
 
 .toggle input:checked ~ .toggleTrack .toggleThumb {
@@ -234,8 +234,8 @@
 
 .btnEdit {
   background: none;
-  border: 1px solid #e8e3d8;
-  color: #1a2744;
+  border: 1px solid var(--border-default);
+  color: var(--text-emphasis);
   padding: 4px 10px;
   border-radius: 3px;
   font-size: var(--fs-btn);
@@ -246,14 +246,14 @@
 }
 
 .btnEdit:hover {
-  border-color: #d4860a;
-  color: #d4860a;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .btnDelete {
   background: none;
-  border: 1px solid #f0e8e0;
-  color: #c5998e;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
   padding: 4px 7px;
   border-radius: 3px;
   cursor: pointer;
@@ -274,7 +274,7 @@
   align-items: center;
   gap: 5px;
   font-size: 11.5px;
-  color: #a89e8c;
+  color: var(--text-secondary);
   font-family: 'Consolas', 'Menlo', 'Monaco', monospace;
   margin-bottom: 10px;
   overflow: hidden;
@@ -284,7 +284,7 @@
 
 .pathRow svg {
   flex-shrink: 0;
-  color: #d6d0c4;
+  color: var(--border-muted);
 }
 
 /* Footer */
@@ -300,15 +300,15 @@
   align-items: center;
   gap: 5px;
   font-size: 11.5px;
-  color: #a89e8c;
+  color: var(--text-secondary);
 }
 
 .opBadge {
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   letter-spacing: 0.5px;
-  background: #f2ede4;
-  color: #1a2744;
+  background: var(--bg-btn-secondary);
+  color: var(--text-emphasis);
   padding: 1px 5px;
   border-radius: 2px;
 }
@@ -331,8 +331,8 @@
   letter-spacing: 0.1px;
 }
 
-.chip_move   { background: #e8f0fd; color: #1d4ed8; }
-.chip_copy   { background: #f0ebff; color: #7c3aed; }
-.chip_rename { background: rgba(212,134,10,0.12); color: #b8740a; }
-.chip_delete { background: #fdecea; color: #b91c1c; }
-.chip_unzip  { background: #e6faf6; color: #0f766e; }
+.chip_move   { background: var(--chip-move-bg);   color: var(--chip-move-text);   }
+.chip_copy   { background: var(--chip-copy-bg);   color: var(--chip-copy-text);   }
+.chip_rename { background: var(--chip-rename-bg); color: var(--chip-rename-text); }
+.chip_delete { background: var(--chip-delete-bg); color: var(--chip-delete-text); }
+.chip_unzip  { background: var(--chip-unzip-bg);  color: var(--chip-unzip-text);  }

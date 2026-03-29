@@ -1,4 +1,4 @@
-/* Overlay muy sutil — sin fondo gris oscuro */
+/* Overlay */
 .overlay {
   position: fixed;
   inset: 0;
@@ -9,10 +9,10 @@
   z-index: 100;
 }
 
-/* Modal: fondo blanco puro, borde fino, sin sombra */
+/* Modal */
 .modal {
-  background: #fff;
-  border: 1px solid #d6d0c4;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
   border-radius: 4px;
   width: 620px;
   max-width: 96vw;
@@ -29,7 +29,7 @@
 .modalTitle {
   font-size: var(--fs-modal-title);
   font-weight: var(--fw-normal);
-  color: #111;
+  color: var(--text-primary);
   letter-spacing: -0.2px;
 }
 
@@ -52,46 +52,46 @@
 .label {
   font-size: var(--fs-label);
   font-weight: var(--fw-medium);
-  color: #1a2744;
+  color: var(--text-emphasis);
   text-transform: uppercase;
   letter-spacing: var(--ls-label);
 }
 
 .input {
-  border: 1px solid #e8e3d8;
+  border: 1px solid var(--border-default);
   border-radius: 3px;
   padding: 8px 10px;
   font-size: var(--fs-body);
   font-weight: var(--fw-normal);
   font-family: inherit;
-  color: #111;
+  color: var(--text-primary);
   outline: none;
-  background: #faf9f6;
-  transition: border-color 0.12s;
+  background: var(--bg-input);
+  transition: border-color 0.12s, background 0.12s;
 }
 
 .input:focus {
-  border-color: #d4860a;
-  background: #fff;
+  border-color: var(--accent);
+  background: var(--bg-input-focus);
 }
 
 .select {
-  border: 1px solid #e8e3d8;
+  border: 1px solid var(--border-default);
   border-radius: 3px;
   padding: 8px 10px;
   font-size: var(--fs-body);
   font-weight: var(--fw-normal);
   font-family: inherit;
-  color: #111;
+  color: var(--text-primary);
   outline: none;
-  background: #faf9f6;
+  background: var(--bg-input);
   cursor: pointer;
   width: fit-content;
   transition: border-color 0.12s;
 }
 
 .select:focus {
-  border-color: #d4860a;
+  border-color: var(--accent);
 }
 
 /* Sections */
@@ -100,7 +100,7 @@
   flex-direction: column;
   gap: 8px;
   padding-top: 14px;
-  border-top: 1px solid #f0ebe0;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .sectionHeader {
@@ -112,21 +112,21 @@
 .sectionTitle {
   font-size: var(--fs-label);
   font-weight: var(--fw-medium);
-  color: #1a2744;
+  color: var(--text-emphasis);
   text-transform: uppercase;
   letter-spacing: var(--ls-label);
 }
 
 .sectionEmpty {
-  font-size: 12px;
-  color: #c5bfb4;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
   font-style: italic;
 }
 
 .btnAdd {
   background: none;
-  border: 1px dashed #d6d0c4;
-  color: #a89e8c;
+  border: 1px dashed var(--border-muted);
+  color: var(--text-secondary);
   padding: 3px 10px;
   border-radius: 3px;
   font-size: var(--fs-btn);
@@ -137,8 +137,8 @@
 }
 
 .btnAdd:hover {
-  border-color: #d4860a;
-  color: #d4860a;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Rows */
@@ -163,20 +163,20 @@
 
 .chainArrow {
   font-size: 11px;
-  color: #d6d0c4;
+  color: var(--border-muted);
   padding-left: 8px;
   line-height: 1;
 }
 
 .selectSm {
-  border: 1px solid #e8e3d8;
+  border: 1px solid var(--border-default);
   border-radius: 3px;
   padding: 5px 8px;
   font-size: var(--fs-small);
   font-weight: var(--fw-normal);
   font-family: inherit;
-  color: #111;
-  background: #faf9f6;
+  color: var(--text-primary);
+  background: var(--bg-input);
   outline: none;
   cursor: pointer;
   flex-shrink: 0;
@@ -184,30 +184,30 @@
 }
 
 .selectSm:focus {
-  border-color: #d4860a;
+  border-color: var(--accent);
 }
 
 .inputSm {
-  border: 1px solid #e8e3d8;
+  border: 1px solid var(--border-default);
   border-radius: 3px;
   padding: 5px 8px;
   font-size: var(--fs-small);
   font-weight: var(--fw-normal);
   font-family: inherit;
-  color: #111;
-  background: #faf9f6;
+  color: var(--text-primary);
+  background: var(--bg-input);
   outline: none;
   flex: 1;
   min-width: 120px;
-  transition: border-color 0.12s;
+  transition: border-color 0.12s, background 0.12s;
 }
 
 .inputSm:focus {
-  border-color: #d4860a;
-  background: #fff;
+  border-color: var(--accent);
+  background: var(--bg-input-focus);
 }
 
-/* Folder picker — tamaño normal (ruta vigilada) */
+/* Folder picker — tamaño normal */
 .folderInput {
   display: flex;
   gap: 6px;
@@ -219,9 +219,9 @@
 }
 
 .btnFolder {
-  background: #f2ede4;
-  border: 1px solid #e8e3d8;
-  color: #1a2744;
+  background: var(--bg-btn-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-emphasis);
   padding: 0 10px;
   height: 34px;
   border-radius: 3px;
@@ -233,11 +233,11 @@
 }
 
 .btnFolder:hover {
-  border-color: #d4860a;
-  color: #d4860a;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* Folder picker — tamaño pequeño (acciones) */
+/* Folder picker — tamaño pequeño */
 .folderInputSm {
   display: flex;
   gap: 4px;
@@ -251,9 +251,9 @@
 }
 
 .btnFolderSm {
-  background: #f2ede4;
-  border: 1px solid #e8e3d8;
-  color: #1a2744;
+  background: var(--bg-btn-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-emphasis);
   padding: 0 7px;
   height: 28px;
   border-radius: 3px;
@@ -265,8 +265,8 @@
 }
 
 .btnFolderSm:hover {
-  border-color: #d4860a;
-  color: #d4860a;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Rename builder */
@@ -290,9 +290,9 @@
 }
 
 .tokenBtn {
-  background: #f2ede4;
-  border: 1px solid #e8e3d8;
-  color: #1a2744;
+  background: var(--bg-btn-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-emphasis);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   font-family: inherit;
@@ -304,9 +304,9 @@
 }
 
 .tokenBtn:hover {
-  background: rgba(212, 134, 10, 0.1);
-  border-color: #d4860a;
-  color: #b8740a;
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent-hover);
 }
 
 /* Unzip */
@@ -323,8 +323,8 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 12px;
-  color: #555;
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
@@ -333,7 +333,7 @@
 .btnRemove {
   background: none;
   border: none;
-  color: #d6d0c4;
+  color: var(--border-muted);
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
@@ -348,7 +348,7 @@
 }
 
 .error {
-  font-size: 12px;
+  font-size: var(--fs-small);
   color: #c0392b;
   background: #fdf0ed;
   border: 1px solid #f5c6bc;
@@ -362,14 +362,14 @@
   justify-content: flex-end;
   gap: 8px;
   padding: 12px 24px 18px;
-  border-top: 1px solid #f0ebe0;
+  border-top: 1px solid var(--border-subtle);
   flex-shrink: 0;
 }
 
 .btnCancel {
   background: none;
-  border: 1px solid #e8e3d8;
-  color: #6b6456;
+  border: 1px solid var(--border-default);
+  color: var(--text-tertiary);
   padding: 7px 16px;
   border-radius: 3px;
   font-size: var(--fs-btn);
@@ -380,12 +380,12 @@
 }
 
 .btnCancel:hover {
-  border-color: #c5bfb4;
+  border-color: var(--border-muted);
 }
 
 .btnSave {
-  background: #111;
-  color: #fff;
+  background: var(--bg-btn-primary);
+  color: var(--text-btn-primary);
   border: none;
   padding: 7px 20px;
   border-radius: 3px;
@@ -393,11 +393,11 @@
   font-weight: var(--fw-semibold);
   font-family: inherit;
   cursor: pointer;
-  transition: background 0.12s;
+  transition: opacity 0.12s;
 }
 
 .btnSave:hover:not(:disabled) {
-  background: #2a2a2a;
+  opacity: 0.85;
 }
 
 .btnSave:disabled {
