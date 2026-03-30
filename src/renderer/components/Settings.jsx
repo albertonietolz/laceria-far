@@ -107,6 +107,7 @@ export default function Settings() {
           </div>
         </div>
       </div>
+      <p className={styles.credit}>{t('credit')}</p>
     </div>
   )
 }

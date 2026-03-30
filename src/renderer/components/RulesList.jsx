@@ -46,6 +46,7 @@ export default function RulesList() {
   const [rules, setRules] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editingRule, setEditingRule] = useState(null)
+  const [paused, setPaused] = useState(false)
 
   const loadRules = useCallback(async () => {
     const data = await window.laceria.getRules()
@@ -89,12 +90,23 @@ export default function RulesList() {
             <span className={styles.countBadge}>{rules.length}</span>
           )}
         </div>
-        <button className={styles.btnNew} onClick={handleNew}>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M6 1.5v9M1.5 6h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-          </svg>
-          {t('rules.newRule')}
-        </button>
+        <div className={styles.topBarRight}>
+          <button
+            className={paused ? `${styles.btnPause} ${styles.btnPaused}` : styles.btnPause}
+            onClick={() => {
+              if (paused) { window.laceria.resumeWatchers(); setPaused(false) }
+              else        { window.laceria.pauseWatchers();  setPaused(true)  }
+            }}
+          >
+            {paused ? t('header.resumeAll') : t('header.pauseAll')}
+          </button>
+          <button className={styles.btnNew} onClick={handleNew}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M6 1.5v9M1.5 6h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+            {t('rules.newRule')}
+          </button>
+        </div>
       </div>
 
       {rules.length === 0 && (

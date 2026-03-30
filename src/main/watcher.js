@@ -1,7 +1,9 @@
 const chokidar = require('chokidar')
 const path = require('path')
 const fs = require('fs')
+const crypto = require('crypto')
 const { getRules } = require('./store')
+const { addActivity } = require('./activity')
 
 const move = require('./actions/move')
 const copy = require('./actions/copy')
@@ -16,6 +18,15 @@ const watchers = new Map()
 let paused = false
 let mainWindow = null
 
+// ── Anti-loop protection ───────────────────────────────────────────────────
+
+const processingFiles = new Set()
+
+function markProcessing(filePath) {
+  processingFiles.add(filePath)
+  setTimeout(() => processingFiles.delete(filePath), 3000)
+}
+
 function setMainWindow(win) {
   mainWindow = win
 }
@@ -23,6 +34,12 @@ function setMainWindow(win) {
 function sendNotification(type, rule, actionType, message) {
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.webContents.send('notification', { type, rule, action: actionType, message })
+  }
+}
+
+function sendActivityNew(entry) {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send('activity:new', entry)
   }
 }
 
@@ -90,19 +107,51 @@ function evaluateRule(rule, fields) {
 // ── Action execution ───────────────────────────────────────────────────────
 
 async function executeActions(rule, filePath) {
+  let currentPath = filePath
+
   for (const action of rule.actions) {
     const handler = ACTION_MAP[action.type]
     if (!handler) {
       console.error(`[watcher] Unknown action type: "${action.type}"`)
       continue
     }
+
+    const pathBeforeAction = currentPath
     try {
-      await handler(filePath, action)
-      console.log(`[watcher] Action "${action.type}" succeeded for "${filePath}"`)
+      const newPath = await handler(currentPath, action)
+      console.log(
+        `[watcher] Action "${action.type}" succeeded: "${pathBeforeAction}" → "${newPath ?? 'consumed'}"`
+      )
+      if (newPath) {
+        markProcessing(newPath)
+        currentPath = newPath
+      }
       sendNotification('success', rule.name, action.type, null)
+      const entry = addActivity({
+        id: crypto.randomUUID(),
+        timestamp: new Date().toISOString(),
+        ruleName: rule.name,
+        filePath: pathBeforeAction,
+        action: action.type,
+        status: 'success',
+        message: null,
+      })
+      sendActivityNew(entry)
+      if (newPath === null) break  // file consumed (delete / unzip+deleteOriginal)
     } catch (err) {
-      console.error(`[watcher] Action "${action.type}" failed for "${filePath}":`, err.message)
+      console.error(`[watcher] Action "${action.type}" failed for "${pathBeforeAction}":`, err.message)
       sendNotification('error', rule.name, action.type, err.message)
+      const entry = addActivity({
+        id: crypto.randomUUID(),
+        timestamp: new Date().toISOString(),
+        ruleName: rule.name,
+        filePath: pathBeforeAction,
+        action: action.type,
+        status: 'error',
+        message: err.message,
+      })
+      sendActivityNew(entry)
+      break  // stop chain — file may be in unknown state
     }
   }
 }
@@ -130,6 +179,10 @@ async function handleFileAdded(filePath) {
   )
 
   for (const rule of matchingRules) {
+    if (rule.ignoreProcessed && processingFiles.has(filePath)) {
+      console.log(`[watcher] Rule "${rule.name}" skipped — ignoreProcessed=true and file in processingFiles`)
+      continue
+    }
     if (evaluateRule(rule, fields)) {
       console.log(`[watcher] Rule "${rule.name}" matched → "${filePath}"`)
       await executeActions(rule, filePath)

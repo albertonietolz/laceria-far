@@ -20,11 +20,16 @@ module.exports = async function rename(filePath, action) {
   const dir = path.dirname(filePath)
   const now = new Date()
 
+  // \.?\{ext\} absorbs an explicit dot the user may have typed before {ext}
+  // and replaces it with ext-including-dot (e.g. ".pdf"), so both
+  // "{name}{ext}" and "{name}.{ext}" produce "name.pdf" correctly.
   const newName = action.pattern
     .replace(/\{name\}/g, name)
-    .replace(/\{ext\}/g, ext.replace(/^\./, ''))
-    .replace(/\{datetime\}/g, formatDatetime(now))  // antes que {date} para evitar colisión
+    .replace(/\.?\{ext\}/g, ext)          // ext already contains the leading dot
+    .replace(/\{datetime\}/g, formatDatetime(now))
     .replace(/\{date\}/g, formatDate(now))
 
-  await fs.rename(filePath, path.join(dir, newName))
+  const newPath = path.join(dir, newName)
+  await fs.rename(filePath, newPath)
+  return newPath
 }

@@ -17,6 +17,12 @@
   gap: 10px;
 }
 
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .heading {
   font-size: var(--fs-heading);
   font-weight: var(--fw-normal);
@@ -32,6 +38,34 @@
   border: 1px solid var(--border-default);
   padding: 2px 7px;
   border-radius: 20px;
+}
+
+.btnPause {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
+  font-family: inherit;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.14s, color 0.14s;
+}
+
+.btnPause:hover {
+  border-color: var(--border-muted);
+}
+
+.btnPaused {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btnPaused:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 .btnNew {

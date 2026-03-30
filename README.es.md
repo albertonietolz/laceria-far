@@ -18,21 +18,21 @@ El nombre viene de la **lacería nazarí** — los patrones geométricos entrela
 
 ---
 
-## ✦ Funcionalidades
+## Funcionalidades
 
 | | |
 |---|---|
-| 📂 **Vigilancia de carpetas** | Monitoriza cualquier carpeta del sistema. Los archivos que entren disparan el motor de reglas al instante. |
-| 🔀 **Condiciones AND / OR** | Filtra por nombre, extensión, tamaño o fecha de creación. Combina condiciones con AND (todas deben cumplirse) o OR (basta con una). |
-| ⛓️ **Acciones encadenadas** | Apila varias acciones por regla. Mueve un archivo, luego renómbralo, luego descomprímelo — en secuencia. |
-| 🪟 **Icono en bandeja del sistema** | Vive como icono en la bandeja. Sin ventana en la barra de tareas. Clic derecho para pausar reglas, abrir la interfaz o cerrar la app. |
-| 🌑 **Modo background** | Cerrar la ventana no detiene la app. Las reglas siguen activas mientras el equipo esté encendido. |
-| 🚀 **Arranque automático** | Inicio con Windows opcional. Actívalo desde Ajustes y la app arranca en silencio al encender el equipo. |
-| 🗂️ **Constructor visual de reglas** | Crea reglas desde una interfaz limpia. Selector de carpeta para las rutas, botones de variables para los patrones de renombrado. |
+| **Vigilancia de carpetas** | Monitoriza cualquier carpeta del sistema. Los archivos que entren disparan el motor de reglas al instante. |
+| **Condiciones AND / OR** | Filtra por nombre, extensión, tamaño o fecha de creación. Combina condiciones con AND (todas deben cumplirse) o OR (basta con una). |
+| **Acciones encadenadas** | Apila varias acciones por regla. Mueve un archivo, luego renómbralo, luego descomprímelo — en secuencia. |
+| **Icono en bandeja del sistema** | Vive como icono en la bandeja. Sin ventana en la barra de tareas. Clic derecho para pausar reglas, abrir la interfaz o cerrar la app. |
+| **Modo background** | Cerrar la ventana no detiene la app. Las reglas siguen activas mientras el equipo esté encendido. |
+| **Arranque automático** | Inicio con Windows opcional. Actívalo desde Ajustes y la app arranca en silencio al encender el equipo. |
+| **Constructor visual de reglas** | Crea reglas desde una interfaz limpia. Selector de carpeta para las rutas, botones de variables para los patrones de renombrado. |
 
 ---
 
-## ⚙️ Cómo funciona — un ejemplo real
+## Cómo funciona — un ejemplo real
 
 > **Objetivo:** Que cualquier PDF que llegue a `Descargas` se mueva a `Documentos\PDFs` y se renombre con la fecha de hoy.
 
@@ -54,7 +54,7 @@ Pon el toggle en activo. A partir de ahora, cada `.pdf` que caiga en Descargas s
 
 ---
 
-## 🛠️ Instalación
+## Instalación
 
 ### Desde el instalador
 
@@ -74,7 +74,7 @@ npm run build      # genera el instalador → release/
 
 ---
 
-## 🏗️ Construido con
+## Construido con
 
 - [Electron](https://www.electronjs.org/) — shell de escritorio
 - [React](https://react.dev/) — interfaz de usuario
@@ -84,7 +84,7 @@ npm run build      # genera el instalador → release/
 
 ---
 
-## 📸 Lacería
+## Lacería
 
 > *Los patrones geométricos de la lacería nazarí — el origen visual del nombre de este proyecto.*
 

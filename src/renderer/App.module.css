@@ -76,15 +76,3 @@
   background-size: 60px 60px;
 }
 
-/* ── Credit ──────────────────────────────────────────────────────────────── */
-
-.credit {
-  position: fixed;
-  bottom: 12px;
-  right: 16px;
-  font-size: 11px;
-  color: var(--text-primary);
-  opacity: 0.35;
-  pointer-events: none;
-  user-select: none;
-}

@@ -114,6 +114,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
   const [actions, setActions] = useState(
     rule?.actions?.length ? rule.actions : [emptyAction()]
   )
+  const [ignoreProcessed, setIgnoreProcessed] = useState(rule?.ignoreProcessed ?? false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
@@ -170,6 +171,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
         conditionOperator,
         conditions,
         actions,
+        ignoreProcessed,
         enabled: rule?.enabled ?? true,
       }
       await window.laceria.saveRule(ruleData)
@@ -242,6 +244,18 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
               onChange={setWatchPath}
               placeholder={t('modal.watchPathPlaceholder')}
             />
+          </div>
+
+          <div className={styles.fieldRow}>
+            <label className={styles.ignoreRow}>
+              <input
+                type="checkbox"
+                checked={ignoreProcessed}
+                onChange={e => setIgnoreProcessed(e.target.checked)}
+              />
+              <span className={styles.ignoreLabel}>{t('modal.ignoreProcessed')}</span>
+              <span className={styles.ignoreDesc}>{t('modal.ignoreProcessedDesc')}</span>
+            </label>
           </div>
 
           <div className={styles.fieldRow}>

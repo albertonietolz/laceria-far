@@ -6,9 +6,25 @@ const subscribers = new Set()
 
 const strings = {
   es: {
+    // Header
+    'header.pauseAll':  'Pausar todo',
+    'header.resumeAll': 'Reanudar',
+
     // Tabs
     'tabs.rules':    'Reglas',
+    'tabs.activity': 'Actividad',
     'tabs.settings': 'Ajustes',
+
+    // Activity
+    'activity.heading':       'Actividad',
+    'activity.clearBtn':      'Limpiar historial',
+    'activity.clearConfirm':  '¿Limpiar todo el historial de actividad?',
+    'activity.emptyTitle':    'Sin actividad registrada',
+    'activity.emptyDesc':     'Las acciones ejecutadas aparecerán aquí.',
+    'activity.statusSuccess': 'Éxito',
+    'activity.statusError':   'Error',
+    'activity.labelRule':     'Regla',
+    'activity.labelFile':     'Archivo',
 
     // Rules view
     'rules.heading':       'Reglas',
@@ -49,6 +65,8 @@ const strings = {
     'modal.cancel':              'Cancelar',
     'modal.save':                'Guardar',
     'modal.saving':              'Guardando…',
+    'modal.ignoreProcessed':     'Ignorar archivos creados por Laceria',
+    'modal.ignoreProcessedDesc': 'Evita que esta regla se dispare sobre archivos que la app acaba de procesar.',
     'modal.errorName':           'El nombre es obligatorio.',
     'modal.errorPath':           'La ruta vigilada es obligatoria.',
     'modal.errorPathNotFound':   'La ruta vigilada no existe en el sistema de archivos.',
@@ -103,9 +121,25 @@ const strings = {
     'tray.quit':         'Salir',
   },
   en: {
+    // Header
+    'header.pauseAll':  'Pause all',
+    'header.resumeAll': 'Resume',
+
     // Tabs
     'tabs.rules':    'Rules',
+    'tabs.activity': 'Activity',
     'tabs.settings': 'Settings',
+
+    // Activity
+    'activity.heading':       'Activity',
+    'activity.clearBtn':      'Clear history',
+    'activity.clearConfirm':  'Clear all activity history?',
+    'activity.emptyTitle':    'No activity recorded',
+    'activity.emptyDesc':     'Executed actions will appear here.',
+    'activity.statusSuccess': 'Success',
+    'activity.statusError':   'Error',
+    'activity.labelRule':     'Rule',
+    'activity.labelFile':     'File',
 
     // Rules view
     'rules.heading':       'Rules',
@@ -146,6 +180,8 @@ const strings = {
     'modal.cancel':              'Cancel',
     'modal.save':                'Save',
     'modal.saving':              'Saving…',
+    'modal.ignoreProcessed':     'Ignore files created by Laceria',
+    'modal.ignoreProcessedDesc': 'Prevents this rule from triggering on files the app just processed.',
     'modal.errorName':           'Name is required.',
     'modal.errorPath':           'Watch path is required.',
     'modal.errorPathNotFound':   'The watched path does not exist on the file system.',

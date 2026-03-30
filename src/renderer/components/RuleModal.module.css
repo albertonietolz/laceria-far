@@ -94,6 +94,26 @@
   border-color: var(--accent);
 }
 
+/* Ignore processed toggle */
+.ignoreRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.ignoreLabel {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.ignoreDesc {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
 /* Sections */
 .section {
   display: flex;

@@ -13,5 +13,7 @@ module.exports = async function unzip(filePath, action) {
 
   if (action.deleteOriginal) {
     await fs.unlink(filePath)
+    return null   // file consumed — no path to pass forward
   }
+  return filePath // original still exists
 }

@@ -18,21 +18,21 @@ The name comes from **lacería nazarí** — the geometric interlace patterns of
 
 ---
 
-## ✦ Features
+## Features
 
 | | |
 |---|---|
-| 📂 **Folder watching** | Monitor any folder on your system. Files added to it trigger the rule engine instantly. |
-| 🔀 **AND / OR conditions** | Filter by file name, extension, size, or creation date. Combine conditions with AND (all must match) or OR (any is enough). |
-| ⛓️ **Chained actions** | Stack multiple actions per rule. Move a file, then rename it, then unzip it — in sequence. |
-| 🪟 **System tray** | Runs as a tray icon. No window in your taskbar. Right-click to pause rules, open the interface, or quit. |
-| 🌑 **Background mode** | Closing the window doesn't stop the app. Rules keep running as long as your machine is on. |
-| 🚀 **Autostart** | Optional Windows login item. Enable it from Settings and the app starts silently on boot. |
-| 🗂️ **Visual rule builder** | Build rules through a clean interface. Folder picker for paths, token buttons for rename patterns. |
+| **Folder watching** | Monitor any folder on your system. Files added to it trigger the rule engine instantly. |
+| **AND / OR conditions** | Filter by file name, extension, size, or creation date. Combine conditions with AND (all must match) or OR (any is enough). |
+| **Chained actions** | Stack multiple actions per rule. Move a file, then rename it, then unzip it — in sequence. |
+| **System tray** | Runs as a tray icon. No window in your taskbar. Right-click to pause rules, open the interface, or quit. |
+| **Background mode** | Closing the window doesn't stop the app. Rules keep running as long as your machine is on. |
+| **Autostart** | Optional Windows login item. Enable it from Settings and the app starts silently on boot. |
+| **Visual rule builder** | Build rules through a clean interface. Folder picker for paths, token buttons for rename patterns. |
 
 ---
 
-## ⚙️ How it works — a real example
+## How it works — a real example
 
 > **Goal:** Any PDF dropped into `Downloads` should be moved to `Documents\PDFs` and renamed with today's date.
 
@@ -54,7 +54,7 @@ Toggle the rule on. From now on, every `.pdf` landing in Downloads moves and ren
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ### From installer
 
@@ -74,7 +74,7 @@ npm run build      # build installer → release/
 
 ---
 
-## 🏗️ Built with
+## Built with
 
 - [Electron](https://www.electronjs.org/) — desktop shell
 - [React](https://react.dev/) — UI
@@ -84,7 +84,7 @@ npm run build      # build installer → release/
 
 ---
 
-## 📸 Lacería
+## Lacería
 
 > *The geometric patterns of lacería — the visual origin of this project's name.*
 

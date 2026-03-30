@@ -4,6 +4,7 @@ const fs = require('fs')
 const crypto = require('crypto')
 const { getRules, saveRules } = require('./store')
 const { initWatchers, pauseWatchers, resumeWatchers, setMainWindow } = require('./watcher')
+const { readActivity, clearActivity } = require('./activity')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -149,6 +150,10 @@ function registerIpcHandlers() {
   ipcMain.handle('dialog:checkPath', (_event, p) => {
     return fs.existsSync(p)
   })
+
+  // ── Activity ─────────────────────────────────────────────────────────────
+  ipcMain.handle('activity:getAll', () => readActivity())
+  ipcMain.handle('activity:clear', () => clearActivity())
 }
 
 function createWindow() {

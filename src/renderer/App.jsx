@@ -3,6 +3,7 @@ import styles from './App.module.css'
 import logo from '../assets/tray-icon.png'
 import { t, subscribe } from './i18n'
 import RulesList from './components/RulesList'
+import ActivityLog from './components/ActivityLog'
 import Settings from './components/Settings'
 import ToastContainer from './components/Toast'
 
@@ -15,7 +16,10 @@ export default function App() {
 
   const addToast = useCallback((type, message) => {
     const id = Date.now() + Math.random()
-    setToasts(prev => [...prev, { id, type, message }])
+    setToasts(prev => {
+      const next = [...prev, { id, type, message }]
+      return next.length > 2 ? next.slice(next.length - 2) : next
+    })
   }, [])
 
   const removeToast = useCallback((id) => {
@@ -46,6 +50,12 @@ export default function App() {
             {t('tabs.rules')}
           </button>
           <button
+            className={tab === 'activity' ? `${styles.tab} ${styles.active}` : styles.tab}
+            onClick={() => setTab('activity')}
+          >
+            {t('tabs.activity')}
+          </button>
+          <button
             className={tab === 'settings' ? `${styles.tab} ${styles.active}` : styles.tab}
             onClick={() => setTab('settings')}
           >
@@ -54,10 +64,11 @@ export default function App() {
         </nav>
       </header>
       <main className={styles.main}>
-        {tab === 'rules' ? <RulesList /> : <Settings />}
+        {tab === 'rules'    && <RulesList />}
+        {tab === 'activity' && <ActivityLog />}
+        {tab === 'settings' && <Settings />}
       </main>
       <ToastContainer toasts={toasts} onRemove={removeToast} />
-      <p className={styles.credit}>{t('credit')}</p>
     </div>
   )
 }

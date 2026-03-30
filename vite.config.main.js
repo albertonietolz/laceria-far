@@ -16,6 +16,7 @@ export default defineConfig({
         index: 'src/main/index.js',
         preload: 'src/main/preload.js',
         store: 'src/main/store.js',
+        activity: 'src/main/activity.js',
         watcher: 'src/main/watcher.js',
         'actions/utils': 'src/main/actions/utils.js',
         'actions/move': 'src/main/actions/move.js',
