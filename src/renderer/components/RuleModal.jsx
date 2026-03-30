@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import styles from './RuleModal.module.css'
 import { t } from '../i18n'
 
@@ -254,8 +254,8 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
                 onChange={e => setIgnoreProcessed(e.target.checked)}
               />
               <span className={styles.ignoreLabel}>{t('modal.ignoreProcessed')}</span>
-              <span className={styles.ignoreDesc}>{t('modal.ignoreProcessedDesc')}</span>
             </label>
+            <p className={styles.ignoreDesc}>{t('modal.ignoreProcessedDesc')}</p>
           </div>
 
           <div className={styles.fieldRow}>

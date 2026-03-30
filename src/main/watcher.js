@@ -208,7 +208,8 @@ function initWatchers() {
     const watcher = chokidar.watch(watchPath, {
       ignoreInitial: true,
       depth: 0,
-      awaitWriteFinish: { stabilityThreshold: 500, pollInterval: 100 },
+      usePolling: false,
+      awaitWriteFinish: true,
     })
 
     watcher.on('add', (filePath) => handleFileAdded(filePath))

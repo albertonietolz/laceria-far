@@ -97,7 +97,7 @@
 /* Ignore processed toggle */
 .ignoreRow {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   cursor: pointer;
 }
@@ -106,12 +106,13 @@
   font-size: var(--fs-small);
   font-weight: var(--fw-medium);
   color: var(--text-primary);
-  white-space: nowrap;
 }
 
 .ignoreDesc {
-  font-size: var(--fs-small);
-  color: var(--text-secondary);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 3px;
+  padding-left: 22px; /* alineado bajo el label, no bajo el checkbox */
 }
 
 /* Sections */
