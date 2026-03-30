@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  padding: 24px 32px;
 }
 
 .heading {
@@ -7,6 +8,9 @@
   font-weight: var(--fw-normal);
   color: var(--text-primary);
   letter-spacing: -0.3px;
+  height: 36px;
+  display: flex;
+  align-items: center;
   margin-bottom: 24px;
 }
 
