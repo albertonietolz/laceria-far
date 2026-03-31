@@ -10,6 +10,10 @@
 
 ---
 
+> **Work in progress.** Laceria FAR is currently under active development and in testing phase. Expect rough edges, incomplete features, and breaking changes between versions.
+
+---
+
 ## What is Laceria FAR?
 
 Laceria FAR is a desktop automation tool for Windows that watches folders and acts on files according to rules you define. Drop a file into a folder and it moves, renames, copies, or extracts itself — automatically, while the app runs silently in the background.

@@ -10,6 +10,10 @@
 
 ---
 
+> **En desarrollo.** Laceria FAR está actualmente en desarrollo activo y en fase de pruebas. Es posible encontrar errores, funcionalidades incompletas y cambios que rompan la compatibilidad entre versiones.
+
+---
+
 ## ¿Qué es Laceria FAR?
 
 Laceria FAR es una herramienta de automatización de escritorio para Windows que vigila carpetas y actúa sobre los archivos según reglas que tú defines. Deja caer un archivo en una carpeta y se mueve, renombra, copia o extrae solo — de forma automática, mientras la aplicación corre en silencio en segundo plano.
