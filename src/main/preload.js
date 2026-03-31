@@ -7,9 +7,16 @@ contextBridge.exposeInMainWorld("laceria", {
   deleteRule: (id) => ipcRenderer.invoke("rules:delete", id),
   toggleRule: (id) => ipcRenderer.invoke("rules:toggle", id),
 
+  // Categories
+  getCategories: () => ipcRenderer.invoke("categories:getAll"),
+  saveCategory: (category) => ipcRenderer.invoke("categories:save", category),
+  deleteCategory: (id) => ipcRenderer.invoke("categories:delete", id),
+
   // Watcher
   pauseWatchers: () => ipcRenderer.invoke("watcher:pause"),
   resumeWatchers: () => ipcRenderer.invoke("watcher:resume"),
+  pauseCategory: (categoryId) => ipcRenderer.invoke("watcher:pauseCategory", categoryId),
+  resumeCategory: (categoryId) => ipcRenderer.invoke("watcher:resumeCategory", categoryId),
 
   // Settings
   getLoginItem: () => ipcRenderer.invoke("settings:getLoginItem"),

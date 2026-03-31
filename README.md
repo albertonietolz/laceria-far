@@ -29,10 +29,11 @@ The name comes from **lacería nazarí** — the geometric interlace patterns of
 | **Folder watching** | Monitor any folder on your system. Files added to it trigger the rule engine instantly. |
 | **AND / OR conditions** | Filter by file name, extension, size, or creation date. Combine conditions with AND (all must match) or OR (any is enough). |
 | **Chained actions** | Stack multiple actions per rule. Move a file, then rename it, then unzip it — in sequence. |
+| **Categories** | Group rules into named, color-coded categories. Collapse or expand each group, pause/resume all rules in a category at once, and delete a category along with all its rules in one step. Rules without a category appear in an *Uncategorized* group at the bottom. |
 | **System tray** | Runs as a tray icon. No window in your taskbar. Right-click to pause rules, open the interface, or quit. |
 | **Background mode** | Closing the window doesn't stop the app. Rules keep running as long as your machine is on. |
 | **Autostart** | Optional Windows login item. Enable it from Settings and the app starts silently on boot. |
-| **Visual rule builder** | Build rules through a clean interface. Folder picker for paths, token buttons for rename patterns. |
+| **Visual rule builder** | Build rules through a clean interface. Folder picker for paths, token buttons for rename patterns, and a category selector with an inline color-picker to create categories on the fly. |
 | **Activity log** | Every action taken by a rule is recorded in real time — action type, rule name, file, timestamp, and error detail if something goes wrong. Holds up to 500 entries and can be cleared at any time. |
 | **Light / Dark theme** | Switch between light and dark appearance from Settings. The choice is saved and applied on next launch. |
 

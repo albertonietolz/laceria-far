@@ -18,6 +18,9 @@ const watchers = new Map()
 let paused = false
 let mainWindow = null
 
+/** @type {Set<string>} categoryIds that are individually paused */
+const pausedCategories = new Set()
+
 // ── Anti-loop protection ───────────────────────────────────────────────────
 
 const processingFiles = new Set()
@@ -179,6 +182,10 @@ async function handleFileAdded(filePath) {
   )
 
   for (const rule of matchingRules) {
+    if (rule.categoryId && pausedCategories.has(rule.categoryId)) {
+      console.log(`[watcher] Rule "${rule.name}" skipped — category "${rule.categoryId}" is paused`)
+      continue
+    }
     if (rule.ignoreProcessed && processingFiles.has(filePath)) {
       console.log(`[watcher] Rule "${rule.name}" skipped — ignoreProcessed=true and file in processingFiles`)
       continue
@@ -240,4 +247,14 @@ function resumeWatchers() {
   console.log('[watcher] Resumed')
 }
 
-module.exports = { initWatchers, stopWatchers, pauseWatchers, resumeWatchers, setMainWindow }
+function pauseCategory(categoryId) {
+  pausedCategories.add(categoryId)
+  console.log(`[watcher] Category "${categoryId}" paused`)
+}
+
+function resumeCategory(categoryId) {
+  pausedCategories.delete(categoryId)
+  console.log(`[watcher] Category "${categoryId}" resumed`)
+}
+
+module.exports = { initWatchers, stopWatchers, pauseWatchers, resumeWatchers, pauseCategory, resumeCategory, setMainWindow }

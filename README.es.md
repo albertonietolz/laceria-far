@@ -29,10 +29,11 @@ El nombre viene de la **lacería nazarí** — los patrones geométricos entrela
 | **Vigilancia de carpetas** | Monitoriza cualquier carpeta del sistema. Los archivos que entren disparan el motor de reglas al instante. |
 | **Condiciones AND / OR** | Filtra por nombre, extensión, tamaño o fecha de creación. Combina condiciones con AND (todas deben cumplirse) o OR (basta con una). |
 | **Acciones encadenadas** | Apila varias acciones por regla. Mueve un archivo, luego renómbralo, luego descomprímelo — en secuencia. |
+| **Categorías** | Agrupa reglas en categorías con nombre y color. Colapsa o expande cada grupo, pausa o reanuda todas las reglas de una categoría de golpe, y elimina una categoría junto con todas sus reglas en un solo paso. Las reglas sin categoría aparecen en el grupo *Sin categoría* al final. |
 | **Icono en bandeja del sistema** | Vive como icono en la bandeja. Sin ventana en la barra de tareas. Clic derecho para pausar reglas, abrir la interfaz o cerrar la app. |
 | **Modo background** | Cerrar la ventana no detiene la app. Las reglas siguen activas mientras el equipo esté encendido. |
 | **Arranque automático** | Inicio con Windows opcional. Actívalo desde Ajustes y la app arranca en silencio al encender el equipo. |
-| **Constructor visual de reglas** | Crea reglas desde una interfaz limpia. Selector de carpeta para las rutas, botones de variables para los patrones de renombrado. |
+| **Constructor visual de reglas** | Crea reglas desde una interfaz limpia. Selector de carpeta para las rutas, botones de variables para los patrones de renombrado y selector de categoría con paleta de colores integrada para crear categorías al vuelo. |
 | **Registro de actividad** | Cada acción ejecutada por una regla queda registrada en tiempo real — tipo de acción, nombre de la regla, archivo, marca de tiempo y detalle del error si algo falla. Almacena hasta 500 entradas y puede borrarse en cualquier momento. |
 | **Tema claro / oscuro** | Cambia entre apariencia clara y oscura desde Ajustes. La elección se guarda y se aplica al siguiente inicio. |
 

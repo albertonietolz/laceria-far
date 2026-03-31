@@ -377,6 +377,122 @@
   padding: 8px 10px;
 }
 
+/* ── Category picker ─────────────────────────────────────────────────────── */
+
+.categoryRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.categoryRow .select {
+  flex: 1;
+  min-width: 140px;
+}
+
+.btnNewCat {
+  background: none;
+  border: 1px dashed var(--border-muted);
+  color: var(--text-secondary);
+  padding: 5px 11px;
+  border-radius: 3px;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.12s, color 0.12s;
+}
+
+.btnNewCat:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.newCatForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: 3px;
+  margin-top: 2px;
+}
+
+.colorPalette {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.colorSwatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: transform 0.1s, border-color 0.1s;
+  outline: none;
+}
+
+.colorSwatch:hover {
+  transform: scale(1.18);
+}
+
+.colorSwatchSelected {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--bg-input), 0 0 0 3.5px var(--text-primary);
+}
+
+.newCatActions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.btnCancelNewCat {
+  background: none;
+  border: 1px solid var(--border-default);
+  color: var(--text-tertiary);
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.btnCancelNewCat:hover {
+  border-color: var(--border-muted);
+}
+
+.btnSaveNewCat {
+  background: var(--bg-btn-primary);
+  color: var(--text-btn-primary);
+  border: none;
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-semibold);
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.12s;
+}
+
+.btnSaveNewCat:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.btnSaveNewCat:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 /* Footer */
 .footer {
   display: flex;

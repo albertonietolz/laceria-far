@@ -1,6 +1,15 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './RuleModal.module.css'
 import { t } from '../i18n'
+
+const PRESET_COLORS = [
+  '#111111', // Negro
+  '#d4860a', // Amber
+  '#1a2744', // Navy
+  '#6b6456', // Gris oscuro
+  '#2d5a27', // Verde oscuro
+  '#7c1d1d', // Rojo oscuro
+]
 
 function emptyCondition() {
   return { field: 'extension', operator: 'equals', value: '' }
@@ -107,6 +116,12 @@ function RenameInput({ value, onChange }) {
 export default function RuleModal({ rule, onSaved, onCancel }) {
   const [name, setName] = useState(rule?.name ?? '')
   const [watchPath, setWatchPath] = useState(rule?.watchPath ?? '')
+  const [categoryId, setCategoryId] = useState(rule?.categoryId ?? '')
+  const [categories, setCategories] = useState([])
+  const [showNewCat, setShowNewCat] = useState(false)
+  const [newCatName, setNewCatName] = useState('')
+  const [newCatColor, setNewCatColor] = useState('#d4860a')
+  const [savingCat, setSavingCat] = useState(false)
   const [conditionOperator, setConditionOperator] = useState(rule?.conditionOperator ?? 'AND')
   const [conditions, setConditions] = useState(
     rule?.conditions?.length ? rule.conditions : [emptyCondition()]
@@ -117,6 +132,25 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
   const [ignoreProcessed, setIgnoreProcessed] = useState(rule?.ignoreProcessed ?? false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    window.laceria.getCategories().then(setCategories)
+  }, [])
+
+  const handleCreateCategory = async () => {
+    if (!newCatName.trim()) return
+    setSavingCat(true)
+    try {
+      const cat = await window.laceria.saveCategory({ name: newCatName.trim(), color: newCatColor })
+      setCategories(prev => [...prev, cat])
+      setCategoryId(cat.id)
+      setShowNewCat(false)
+      setNewCatName('')
+      setNewCatColor('#d4860a')
+    } finally {
+      setSavingCat(false)
+    }
+  }
 
   const updateCondition = (i, field, value) =>
     setConditions(prev => prev.map((c, idx) => {
@@ -173,6 +207,7 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
         actions,
         ignoreProcessed,
         enabled: rule?.enabled ?? true,
+        ...(categoryId ? { categoryId } : {}),
       }
       await window.laceria.saveRule(ruleData)
       onSaved()
@@ -244,6 +279,72 @@ export default function RuleModal({ rule, onSaved, onCancel }) {
               onChange={setWatchPath}
               placeholder={t('modal.watchPathPlaceholder')}
             />
+          </div>
+
+          {/* Category */}
+          <div className={styles.fieldRow}>
+            <label className={styles.label}>{t('modal.labelCategory')}</label>
+            <div className={styles.categoryRow}>
+              <select
+                className={styles.select}
+                value={categoryId}
+                onChange={e => setCategoryId(e.target.value)}
+              >
+                <option value="">{t('modal.noCategory')}</option>
+                {categories.map(cat => (
+                  <option key={cat.id} value={cat.id}>{cat.name}</option>
+                ))}
+              </select>
+              {!showNewCat && (
+                <button
+                  type="button"
+                  className={styles.btnNewCat}
+                  onClick={() => setShowNewCat(true)}
+                >
+                  {t('categories.newCategory')}
+                </button>
+              )}
+            </div>
+            {showNewCat && (
+              <div className={styles.newCatForm}>
+                <input
+                  className={styles.inputSm}
+                  value={newCatName}
+                  onChange={e => setNewCatName(e.target.value)}
+                  placeholder={t('categories.namePlaceholder')}
+                  autoFocus
+                />
+                <div className={styles.colorPalette}>
+                  {PRESET_COLORS.map(color => (
+                    <button
+                      key={color}
+                      type="button"
+                      className={`${styles.colorSwatch} ${newCatColor === color ? styles.colorSwatchSelected : ''}`}
+                      style={{ background: color }}
+                      onClick={() => setNewCatColor(color)}
+                      title={color}
+                    />
+                  ))}
+                </div>
+                <div className={styles.newCatActions}>
+                  <button
+                    type="button"
+                    className={styles.btnCancelNewCat}
+                    onClick={() => { setShowNewCat(false); setNewCatName(''); setNewCatColor('#d4860a') }}
+                  >
+                    {t('modal.cancel')}
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.btnSaveNewCat}
+                    onClick={handleCreateCategory}
+                    disabled={!newCatName.trim() || savingCat}
+                  >
+                    {t('modal.createCategory')}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className={styles.fieldRow}>

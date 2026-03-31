@@ -1,6 +1,6 @@
 {
   "name": "laceria-far",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Laceria FAR - Electron + React + Vite",
   "main": "dist/main/index.js",
   "author": "",

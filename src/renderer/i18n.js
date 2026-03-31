@@ -36,8 +36,19 @@ const strings = {
     'rules.noPath':        'sin ruta configurada',
     'rules.condition':     'condición',
     'rules.conditions':    'condiciones',
+    'rules.rule':          'regla',
+    'rules.rules':         'reglas',
     'rules.edit':          'Editar',
     'rules.deleteConfirm': '¿Eliminar la regla "{{name}}"?',
+
+    // Categories
+    'categories.noCategory':      'Sin categoría',
+    'categories.deleteTitle':     'Eliminar categoría',
+    'categories.deleteMsg':       'Se eliminará la categoría "{{name}}" junto con sus {{count}} {{rulesWord}}. Esta acción no se puede deshacer.',
+    'categories.deleteConfirmBtn':'Eliminar categoría',
+    'categories.emptyGroup':      'Esta categoría no tiene reglas aún.',
+    'categories.newCategory':     '+ Nueva categoría',
+    'categories.namePlaceholder': 'Nombre de la categoría',
 
     // Modal
     'modal.newRule':             'Nueva regla',
@@ -65,6 +76,9 @@ const strings = {
     'modal.cancel':              'Cancelar',
     'modal.save':                'Guardar',
     'modal.saving':              'Guardando…',
+    'modal.labelCategory':       'Categoría',
+    'modal.noCategory':          'Sin categoría',
+    'modal.createCategory':      'Crear',
     'modal.ignoreProcessed':     'Ignorar archivos creados por Laceria',
     'modal.ignoreProcessedDesc': 'Evita que esta regla se dispare sobre archivos que la app acaba de procesar.',
     'modal.errorName':           'El nombre es obligatorio.',
@@ -151,8 +165,19 @@ const strings = {
     'rules.noPath':        'no path configured',
     'rules.condition':     'condition',
     'rules.conditions':    'conditions',
+    'rules.rule':          'rule',
+    'rules.rules':         'rules',
     'rules.edit':          'Edit',
     'rules.deleteConfirm': 'Delete rule "{{name}}"?',
+
+    // Categories
+    'categories.noCategory':      'Uncategorized',
+    'categories.deleteTitle':     'Delete category',
+    'categories.deleteMsg':       'Deleting "{{name}}" will also delete its {{count}} {{rulesWord}}. This cannot be undone.',
+    'categories.deleteConfirmBtn':'Delete category',
+    'categories.emptyGroup':      'This category has no rules yet.',
+    'categories.newCategory':     '+ New category',
+    'categories.namePlaceholder': 'Category name',
 
     // Modal
     'modal.newRule':             'New rule',
@@ -180,6 +205,9 @@ const strings = {
     'modal.cancel':              'Cancel',
     'modal.save':                'Save',
     'modal.saving':              'Saving…',
+    'modal.labelCategory':       'Category',
+    'modal.noCategory':          'No category',
+    'modal.createCategory':      'Create',
     'modal.ignoreProcessed':     'Ignore files created by Laceria',
     'modal.ignoreProcessedDesc': 'Prevents this rule from triggering on files the app just processed.',
     'modal.errorName':           'Name is required.',

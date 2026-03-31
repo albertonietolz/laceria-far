@@ -2,8 +2,8 @@ const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog } = require
 const path = require('path')
 const fs = require('fs')
 const crypto = require('crypto')
-const { getRules, saveRules } = require('./store')
-const { initWatchers, pauseWatchers, resumeWatchers, setMainWindow } = require('./watcher')
+const { getRules, saveRules, getCategories, saveCategory, deleteCategory } = require('./store')
+const { initWatchers, pauseWatchers, resumeWatchers, pauseCategory, resumeCategory, setMainWindow } = require('./watcher')
 const { readActivity, clearActivity } = require('./activity')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -118,9 +118,25 @@ function registerIpcHandlers() {
     return rule
   })
 
+  // ── Categories ───────────────────────────────────────────────────────────
+  ipcMain.handle('categories:getAll', () => getCategories())
+
+  ipcMain.handle('categories:save', (_event, category) => {
+    const cat = saveCategory(category)
+    return cat
+  })
+
+  ipcMain.handle('categories:delete', (_event, id) => {
+    deleteCategory(id)
+    initWatchers()
+    return id
+  })
+
   // ── Watcher ──────────────────────────────────────────────────────────────
   ipcMain.handle('watcher:pause', () => pauseWatchers())
   ipcMain.handle('watcher:resume', () => resumeWatchers())
+  ipcMain.handle('watcher:pauseCategory', (_event, categoryId) => pauseCategory(categoryId))
+  ipcMain.handle('watcher:resumeCategory', (_event, categoryId) => resumeCategory(categoryId))
 
   // ── Settings ─────────────────────────────────────────────────────────────
   ipcMain.handle('settings:getLoginItem', () => {
