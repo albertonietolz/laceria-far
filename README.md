@@ -29,6 +29,8 @@ The name comes from **lacería nazarí** — the geometric interlace patterns of
 | **Background mode** | Closing the window doesn't stop the app. Rules keep running as long as your machine is on. |
 | **Autostart** | Optional Windows login item. Enable it from Settings and the app starts silently on boot. |
 | **Visual rule builder** | Build rules through a clean interface. Folder picker for paths, token buttons for rename patterns. |
+| **Activity log** | Every action taken by a rule is recorded in real time — action type, rule name, file, timestamp, and error detail if something goes wrong. Holds up to 500 entries and can be cleared at any time. |
+| **Light / Dark theme** | Switch between light and dark appearance from Settings. The choice is saved and applied on next launch. |
 
 ---
 

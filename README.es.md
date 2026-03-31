@@ -29,6 +29,8 @@ El nombre viene de la **lacería nazarí** — los patrones geométricos entrela
 | **Modo background** | Cerrar la ventana no detiene la app. Las reglas siguen activas mientras el equipo esté encendido. |
 | **Arranque automático** | Inicio con Windows opcional. Actívalo desde Ajustes y la app arranca en silencio al encender el equipo. |
 | **Constructor visual de reglas** | Crea reglas desde una interfaz limpia. Selector de carpeta para las rutas, botones de variables para los patrones de renombrado. |
+| **Registro de actividad** | Cada acción ejecutada por una regla queda registrada en tiempo real — tipo de acción, nombre de la regla, archivo, marca de tiempo y detalle del error si algo falla. Almacena hasta 500 entradas y puede borrarse en cualquier momento. |
+| **Tema claro / oscuro** | Cambia entre apariencia clara y oscura desde Ajustes. La elección se guarda y se aplica al siguiente inicio. |
 
 ---
 
